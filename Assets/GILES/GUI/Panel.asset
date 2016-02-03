@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f374ca0668df2224282ed650b2cb589d, type: 3}
+  m_Name: Panel
+  m_EditorClassIdentifier: 
+  _font: {fileID: 0}
+  color: {r: .213235319, g: .213235319, b: .213235319, a: .497999996}
+  normalColor: {r: .200000003, g: .200000003, b: .200000003, a: .699999988}
+  highlightedColor: {r: .270000011, g: .270000011, b: .270000011, a: 1}
+  pressedColor: {r: .370000005, g: .370000005, b: .370000005, a: 1}
+  disabledColor: {r: .713235259, g: .713235259, b: .713235259, a: 1}
+  image: {fileID: 0}
+  sprite: {fileID: 0}
+  fontColor: {r: 1, g: 1, b: 1, a: 1}
