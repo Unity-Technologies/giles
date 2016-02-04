@@ -1,5 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
+#if !UNITY_5_2
+using UnityEngine.SceneManagement;
+#endif
 
 namespace GILES
 {
@@ -12,8 +15,11 @@ namespace GILES
 		{
 			if(Input.GetKeyDown(KeyCode.F5) && Input.GetKey(KeyCode.LeftAlt))
 			{
-				Debug.Log("Restarting level!");
-				Application.LoadLevel(Application.loadedLevel);
+#if UNITY_5_2
+				Application.LoadLevel( Application.loadedLevel );
+#else
+				SceneManager.LoadScene( SceneManager.GetActiveScene().name );
+#endif
 			}
 		}
 	}

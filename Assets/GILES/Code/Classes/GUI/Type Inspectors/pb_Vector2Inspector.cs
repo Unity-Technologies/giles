@@ -24,8 +24,13 @@ namespace GILES.Interface
 		public override void InitializeGUI()
 		{
 			title.text = GetName().SplitCamelCase();
+#if UNITY_5_2
 			input_x.onValueChange.AddListener( OnValueChange_X );
 			input_y.onValueChange.AddListener( OnValueChange_Y );
+#else
+			input_x.onValueChanged.AddListener( OnValueChange_X );
+			input_y.onValueChanged.AddListener( OnValueChange_Y );
+#endif
 		}
 
 		protected override void OnUpdateGUI()
@@ -39,7 +44,7 @@ namespace GILES.Interface
 		{
 			float v;
 
-			if(float.TryParse(val, out v))	
+			if(float.TryParse(val, out v))
 			{
 				vector.x = v;
 				OnGUIChanged();
@@ -49,8 +54,8 @@ namespace GILES.Interface
 		public void OnValueChange_Y(string val)
 		{
 			float v;
-			
-			if(float.TryParse(val, out v))	
+
+			if(float.TryParse(val, out v))
 			{
 				vector.y = v;
 				OnGUIChanged();

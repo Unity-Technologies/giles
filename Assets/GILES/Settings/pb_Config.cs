@@ -26,7 +26,7 @@ namespace GILES
 		 * added to the pb_AssetBundles available bundles list.  You may add additional asset bundles at
 		 * runtime using `pb_AssetBundles.RegisterAssetBundle()`.
 		 */
-		public static readonly string[] AssetBundle_Names = new string[] 
+		public static readonly string[] AssetBundle_Names = new string[]
 		{
 			"TestAssets"
 		};
@@ -159,7 +159,9 @@ namespace GILES
 			typeof(UnityEngine.EventSystems.BaseInputModule),
 			typeof(UnityEngine.EventSystems.PointerInputModule),
 			typeof(UnityEngine.EventSystems.StandaloneInputModule),
+#if UNITY_5_2
 			typeof(UnityEngine.EventSystems.TouchInputModule),
+#endif
 			typeof(UnityEngine.EventSystems.BaseRaycaster),
 			typeof(UnityEngine.EventSystems.Physics2DRaycaster),
 			typeof(UnityEngine.EventSystems.PhysicsRaycaster),

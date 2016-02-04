@@ -23,7 +23,11 @@ namespace GILES.Interface
 		public override void InitializeGUI()
 		{
 			title.text = GetName().SplitCamelCase();
+#if UNITY_5_2
 			input.onValueChange.AddListener( OnValueChange );
+#else
+			input.onValueChanged.AddListener( OnValueChange );
+#endif
 		}
 
 		protected override void OnUpdateGUI()
@@ -36,7 +40,7 @@ namespace GILES.Interface
 		{
 			int v;
 
-			if(int.TryParse(val, out v))	
+			if(int.TryParse(val, out v))
 			{
 				value = v;
 				OnGUIChanged();

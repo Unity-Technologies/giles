@@ -1,6 +1,9 @@
 ﻿using UnityEngine;
 using System.Collections;
 using GILES;
+#if !UNITY_5_2
+using UnityEngine.SceneManagement;
+#endif
 
 namespace GILES.Example
 {
@@ -34,13 +37,22 @@ namespace GILES.Example
 				instance.json = pb_FileUtility.ReadFile(san);
 			}
 
+#if !UNITY_5_2
+			SceneManager.LoadScene(instance.sceneToLoadLevelInto);
+#else
 			Application.LoadLevel(instance.sceneToLoadLevelInto);
+#endif
 		}
 
 		private void OnLevelWasLoaded(int i)
 		{
-			if(Application.loadedLevelName == sceneToLoadLevelInto && !string.IsNullOrEmpty(json))
+#if !UNITY_5_2
+			if( SceneManager.GetActiveScene().name == sceneToLoadLevelInto && !string.IsNullOrEmpty(json))
 				pb_Scene.LoadLevel(json);
+#else
+			if( Application.loadedLevelName == sceneToLoadLevelInto && !string.IsNullOrEmpty(json))
+				pb_Scene.LoadLevel(json);
+#endif
 		}
 	}
 }

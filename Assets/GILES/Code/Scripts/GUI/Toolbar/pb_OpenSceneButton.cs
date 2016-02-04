@@ -1,5 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
+#if !UNITY_5_2
+using UnityEngine.SceneManagement;
+#endif
 
 namespace GILES
 {
@@ -14,7 +17,11 @@ namespace GILES
 
 		public void OpenScene()
 		{
+#if UNITY_5_2
 			Application.LoadLevel(scene);
+#else
+			SceneManager.LoadScene(scene);
+#endif
 		}
 	}
 }

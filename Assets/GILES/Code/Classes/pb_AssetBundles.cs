@@ -37,12 +37,12 @@ namespace GILES
 		}
 
 		/**
-		 * Load an AssetBundle from it's name.  Bundle must have been registered using pb_AssetBundles.RegisterAssetBundle() or 
+		 * Load an AssetBundle from it's name.  Bundle must have been registered using pb_AssetBundles.RegisterAssetBundle() or
 		 * have been listed in pb_Config.AssetBundle_Paths.
 		 */
 		public static AssetBundle LoadAssetBundleWithName(string name)
 		{
-			return pb_AssetBundles.instance._LoadAssetBundleWithName(name);	
+			return pb_AssetBundles.instance._LoadAssetBundleWithName(name);
 		}
 
 		/**
@@ -78,8 +78,12 @@ namespace GILES
 			if(!loadedAssetBundles.TryGetValue(full_path, out bundle))
 			{
 				_RegisterAssetBundle(full_path);
-				
+
+#if UNITY_5_2 || UNITY_5_1
 				bundle = AssetBundle.CreateFromFile(full_path);
+#else
+				bundle = AssetBundle.LoadFromFile(full_path);
+#endif
 				loadedAssetBundles.Add(full_path, bundle);
 			}
 
@@ -116,11 +120,11 @@ namespace GILES
 					AssetBundle bundle = _LoadAssetBundle(bundle_path);
 
 					foreach(KeyValuePair<string, UnityEngine.Object> kvp in LoadBundleAssetsWithPaths(bundle))
-					{	
+					{
 						if(kvp.Value.GetType() == typeof(T))
 						{
 							path = new pb_AssetBundlePath(bundle_path, kvp.Key);
-							
+
 							return true;
 						}
 					}
