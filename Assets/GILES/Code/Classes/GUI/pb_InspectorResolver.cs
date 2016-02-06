@@ -60,8 +60,8 @@ namespace GILES.Interface
 
 			foreach(KeyValuePair<IEnumerable<Attribute>, GameObject> kvp in inspectorLookup)
 			{
-				foreach(Attribute attrib in kvp.Key)
-				{   
+                foreach(Attribute attrib in kvp.Key)
+                {
                     if (attrib is pb_TypeInspectorAttribute)
                     {
                         pb_TypeInspectorAttribute pbAttrib = (pb_TypeInspectorAttribute)attrib;
@@ -79,7 +79,7 @@ namespace GILES.Interface
                             }
                         }
                     }
-				}
+                }
 			}
 
 EXACT_TYPE_INSPECTOR_FOUND:
