@@ -60,20 +60,25 @@ namespace GILES.Interface
 
 			foreach(KeyValuePair<IEnumerable<Attribute>, GameObject> kvp in inspectorLookup)
 			{
-				foreach(pb_TypeInspectorAttribute attrib in kvp.Key)
-				{
-					if( attrib.CanEditType(type) )
-					{
-						if(attrib.type == type)
-						{
-							inspectors.Insert(0, kvp.Value);
-							goto EXACT_TYPE_INSPECTOR_FOUND;
-						}
-						else
-						{
-							inspectors.Add(kvp.Value);
-						}
-					}
+				foreach(Attribute attrib in kvp.Key)
+				{   
+                    if (attrib is pb_TypeInspectorAttribute)
+                    {
+                        pb_TypeInspectorAttribute pbAttrib = (pb_TypeInspectorAttribute)attrib;
+
+                        if (pbAttrib.CanEditType(type))
+                        {
+                            if (pbAttrib.type == type)
+                            {
+                                inspectors.Insert(0, kvp.Value);
+                                goto EXACT_TYPE_INSPECTOR_FOUND;
+                            }
+                            else
+                            {
+                                inspectors.Add(kvp.Value);
+                            }
+                        }
+                    }
 				}
 			}
 
