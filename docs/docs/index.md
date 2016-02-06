@@ -1,6 +1,8 @@
-# giles
+# G.I.L.E.S.
 
-G.I.L.E.S.: A Runtime Level Editor for Unity3D
+**A Runtime Level Editor for Unity3D**
+
+**<font color=red>IMPORTANT</font>**  This project is under active development, and not guaranteed to be stable.  The API will change as work proceeds.
 
 ## Quick Start
 

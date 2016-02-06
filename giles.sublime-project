@@ -18,11 +18,13 @@
                 "*.fontsettings" ,
                 "*.renderTexture"
             ],
-
             "folder_exclude_patterns":
             [
                 "Resources"
             ]
+        },
+        {
+        	"path":"docs"
         }
     ]
 }
