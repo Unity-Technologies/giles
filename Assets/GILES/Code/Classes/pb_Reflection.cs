@@ -55,7 +55,7 @@ namespace GILES
 
 		public static Dictionary<string, object> ReflectProperties<T>(T obj, HashSet<string> ignoreFields)
 		{
-			return ReflectProperties<T>(obj, BindingFlags.Instance | BindingFlags.Public, null);
+			return ReflectProperties<T>(obj, BindingFlags.Instance | BindingFlags.Public, ignoreFields);
 		}
 
 		public static Dictionary<string, object> ReflectProperties<T>(T obj, BindingFlags flags, HashSet<string> ignoreFields)
