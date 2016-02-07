@@ -9,7 +9,7 @@ using System.Reflection;
 namespace GILES.Interface
 {
 	/**
-	 * Used by pb_TypeInspector to find the appropriate inspector subclasses to draw 
+	 * Used by pb_TypeInspector to find the appropriate inspector subclasses to draw
 	 * the inspector GUI.
 	 */
 	public static class pb_InspectorResolver
@@ -21,12 +21,12 @@ namespace GILES.Interface
 		private static Dictionary<Type, GameObject> inspectorPool = new Dictionary<Type, GameObject>();
 
 		/// Store a lookup table of pb_TypeInspector prefabs.
-		private static Dictionary<IEnumerable<Attribute>, GameObject> inspectorLookup = null;
+		private static Dictionary<IEnumerable<pb_TypeInspectorAttribute>, GameObject> inspectorLookup = null;
 
 		private static void InitializeLookup()
 		{
 			inspectorPool = new Dictionary<Type, GameObject>();
-			inspectorLookup = new Dictionary<IEnumerable<Attribute>, GameObject>();
+			inspectorLookup = new Dictionary<IEnumerable<pb_TypeInspectorAttribute>, GameObject>();
 
 			foreach(GameObject go in Resources.LoadAll(TYPE_INSPECTOR_PATH, typeof(GameObject)))
 			{
@@ -35,7 +35,8 @@ namespace GILES.Interface
 				if(typeInspector == null)
 					continue;
 
-				inspectorLookup.Add(( (IEnumerable<Attribute>) typeInspector.GetType().GetCustomAttributes(true)), go);
+				IEnumerable<Attribute> typeAttribs = (IEnumerable<Attribute>) typeInspector.GetType().GetCustomAttributes(true);
+				inspectorLookup.Add(typeAttribs.Where(x => x != null && x is pb_TypeInspectorAttribute).Cast<pb_TypeInspectorAttribute>(), go);
 			}
 		}
 
@@ -53,12 +54,12 @@ namespace GILES.Interface
 
 			GameObject inspectorObject;
 
-			if(inspectorPool.TryGetValue(type, out inspectorObject))	
+			if(inspectorPool.TryGetValue(type, out inspectorObject))
 				return GameObject.Instantiate(inspectorObject).GetComponent<pb_TypeInspector>();
 
 			List<GameObject> inspectors = new List<GameObject>();
 
-			foreach(KeyValuePair<IEnumerable<Attribute>, GameObject> kvp in inspectorLookup)
+			foreach(KeyValuePair<IEnumerable<pb_TypeInspectorAttribute>, GameObject> kvp in inspectorLookup)
 			{
 				foreach(pb_TypeInspectorAttribute attrib in kvp.Key)
 				{
@@ -105,7 +106,7 @@ EXACT_TYPE_INSPECTOR_FOUND:
 			pb_TypeInspector inspector = null;
 			System.Type type = property != null ? property.PropertyType : field.FieldType;
 
-			inspector = pb_InspectorResolver.GetInspector(type);	
+			inspector = pb_InspectorResolver.GetInspector(type);
 
 			if(inspector != null)
 			{
