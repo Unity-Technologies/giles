@@ -19,23 +19,23 @@ namespace GILES
 		const string REQUIRED_PATH = "Required/";
 
 		/// A generic unlit vertex color enabled shader.  
-		public const string mat_UnlitVertexColor 	= "Material/UnlitVertexColor";
+		public const string mat_UnlitVertexColor 		= "Material/UnlitVertexColor";
 		/// An unlit vertex color enabled material that shimmers.
-		public const string mat_UnlitVertexColorWavy= "Material/UnlitVertexColorWavy";
+		public const string mat_UnlitVertexColorWavy	= "Material/UnlitVertexColorWavy";
 		/// Material used when rendering object wireframes
-		public const string mat_Wireframe 			= "Material/Wireframe";
+		public const string mat_Wireframe 				= "Material/Wireframe";
 		/// Material used for highlighting selected objects
-		public const string mat_Highlight 			= "Material/Highlight";
+		public const string mat_Highlight 				= "Material/Highlight";
 		/// An opaque lit material used to shade handles with a faux lambert shadow.
-		public const string mat_HandleOpaque 		= "Handles/Material/HandleOpaqueMaterial";
+		public const string mat_HandleOpaque 			= "Handles/Material/HandleOpaqueMaterial";
 		/// A transparent unlit shader that fades based on normal and camera angle.  Used to draw sphere gizmos.
-		public const string mat_RotateHandle 		= "Handles/Material/HandleRotateMaterial";
+		public const string mat_RotateHandle 			= "Handles/Material/HandleRotateMaterial";
 		/// A transparent unlit shader.
-		public const string mat_HandleTransparent 	= "Handles/Material/HandleTransparentMaterial";
+		public const string mat_HandleTransparent 		= "Handles/Material/HandleTransparentMaterial";
 		/// Light gizmo billboard material
-		public const string mat_LightGizmo 			= "Gizmos/Light";
+		public const string mat_LightGizmo 				= "Gizmos/Light";
 		/// Camera gizmo billboard material
-		public const string mat_CameraGizmo 		= "Gizmos/Camera";
+		public const string mat_CameraGizmo 			= "Gizmos/Camera";
 		/// Camera gizmo billboard material
 		public const string mat_WeaponPickupGizmo 		= "Gizmos/WeaponPickup";
 		/// Camera gizmo billboard material

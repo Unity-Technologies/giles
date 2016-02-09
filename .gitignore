@@ -25,5 +25,8 @@ ExportedObj/
 # Unity3D Generated File On Crash Reports
 sysinfo.txt
 
+# Assets/
 Assets/Debug*
+Assets/ShaderForge
+Assets/ShaderForge.meta
 *sublime-workspace

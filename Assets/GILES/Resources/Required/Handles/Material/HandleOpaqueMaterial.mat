@@ -2,14 +2,16 @@
 %TAG !u! tag:unity3d.com,2011:
 --- !u!21 &2100000
 Material:
-  serializedVersion: 3
+  serializedVersion: 6
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: HandleOpaqueMaterial
   m_Shader: {fileID: 4800000, guid: cca4fd0da872b054cb3b6c319ca6bc10, type: 3}
-  m_ShaderKeywords: []
+  m_ShaderKeywords: 
+  m_LightmapFlags: 0
   m_CustomRenderQueue: -1
+  stringTagMap: {}
   m_SavedProperties:
     serializedVersion: 2
     m_TexEnvs:
@@ -24,23 +26,23 @@ Material:
       data:
         first:
           name: _Cutoff
-        second: .5
+        second: 0.5
       data:
         first:
           name: _FresnelStrength
-        second: .469999999
+        second: 0.47
       data:
         first:
           name: _node_9773
-        second: .75
+        second: 0.75
       data:
         first:
           name: _FresnelMin
-        second: .0446428619
+        second: 0.189
       data:
         first:
           name: _FresnelMax
-        second: .821428597
+        second: 1.53
       data:
         first:
           name: _node_9121
@@ -48,9 +50,9 @@ Material:
       data:
         first:
           name: _node_9121_copy
-        second: .00514521217
+        second: 0.005145212
     m_Colors:
       data:
         first:
           name: _Color
-        second: {r: .607843161, g: .968627453, b: .286274523, a: 1}
+        second: {r: 0.60784316, g: 0.96862745, b: 0.28627452, a: 1}
