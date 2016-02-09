@@ -11,12 +11,19 @@ namespace GILES.Interface
 	 */
 	public class pb_ModalWindow : pb_MonoBehaviourSingleton<pb_ModalWindow>
 	{	
-		/// Where this window's content belongs.
+		/**
+		 *	Place content GUI items as content's children.
+		 */
 		public GameObject contents;
 
-		/// The title shown in the header bar.
+		/**
+		 *	The title shown in the header bar.
+		 */
 		public Text windowTitle;
 
+		/**
+		 *	Set the title text shown for this window.
+		 */
 		public static void SetTitle(string title)
 		{
 			instance.windowTitle.text = title;

@@ -9,8 +9,8 @@ using GILES.Serialization;
 namespace GILES
 {
 	/**
-	 * Metadata component used to serialize and deserialize prefabs pointing to
-	 * AssetBundle or Resource folder objects.  Can also mark an object as an
+	 * Metadata components are used to serialize and deserialize prefabs pointing
+	 * to AssetBundle or Resource folder objects.  Can also mark an object as an
 	 * instance asset, meaning the serializer will write all the components and
 	 * information necessary to rebuild the object on deserialization.  If asset 
 	 * is type AssetBundle or Resource it will be loaded from it's respective 

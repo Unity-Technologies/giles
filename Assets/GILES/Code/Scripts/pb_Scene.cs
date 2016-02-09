@@ -131,6 +131,9 @@ namespace GILES
 			return go;
 		}
 
+		/**
+		 *	Save the current level.  Returns a JSON formatted string with the entire scene-graph serialized.
+		 */
 		public static string SaveLevel()
 		{
 			pb_SceneNode rootNode = new pb_SceneNode(instance.gameObject);
@@ -141,6 +144,9 @@ namespace GILES
 			return scenegraph;
 		}
 
+		/**
+		 *	Load a saved level into the scene.  This clears the currently open scene.
+		 */
 		public static void LoadLevel(string levelJson)
 		{
 			if(pb_Scene.nullableInstance != null)
