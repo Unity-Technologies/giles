@@ -26,6 +26,8 @@ namespace GILES
 			GetComponent<MeshFilter>().sharedMesh = GridMesh(lines, scale);
 			GetComponent<MeshRenderer>().sharedMaterial = gridMaterial;
 			GetComponent<MeshRenderer>().sharedMaterial.color = gridColor;
+
+			transform.position = Vector3.zero;
 		}
 
 		/**
