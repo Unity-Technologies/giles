@@ -19,6 +19,10 @@ namespace GILES
 		[SerializeField] private pb_AssetBundlePath _assetBundlePath;
 		[SerializeField] private AssetType _assetType = AssetType.Instance;
 
+		// Tags can be used to organize objects in the resource browser.
+		public string[] tags = new string[0];
+
+		// If target is a prefab, this stores a diff of component values.
 		public pb_ComponentDiff componentDiff;
 
 		/**

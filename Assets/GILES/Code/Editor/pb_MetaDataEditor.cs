@@ -7,11 +7,19 @@ using GILES.Serialization;
 
 namespace GILES.UnityEditor
 {
+	/**
+	 *	Editor for pb_MetaDataComponent.
+	 */
 	[CustomEditor(typeof(pb_MetaDataComponent))]
 	public class pb_MetaDataEditor : Editor
 	{
+		// Store reference to the component target.
 		pb_MetaDataComponent data;
+
+		// The component diff as stored by pb_MetaData.
 		pb_ComponentDiff diff;
+
+		// Remember which component diffs have been expanded.
 		Dictionary<Component, bool> dropdowns = new Dictionary<Component, bool>();
 
 		void OnEnable()
@@ -22,10 +30,14 @@ namespace GILES.UnityEditor
 
 		public override void OnInspectorGUI()
 		{
+			serializedObject.Update();
+
+			// Non-user-editable data.
 			GUILayout.Label("Asset Type: " + data.metadata.assetType);
 			GUILayout.Label("File ID: " + data.metadata.fileId);
 			GUILayout.Label("Asset Path: " + data.metadata.assetBundlePath);
 
+			// Show the stored component diffs.
 			GUILayout.Label("Modified Values", EditorStyles.boldLabel);
 
 			int labelWidth = (int) Mathf.Min(Screen.width/2, 100);
