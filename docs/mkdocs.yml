@@ -1,2 +1,6 @@
-site_name: My Docs
-theme: bootstrap
+site_name: G.I.L.E.S. Documentation
+theme: readthedocs
+
+pages:
+- Home: index.md
+- Tutorial: tutorial/quickstart.md
