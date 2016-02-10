@@ -43,7 +43,7 @@ namespace GILES
 
 			if(!pb_FileUtility.IsValidPath(san, ".json"))
 			{
-				Debug.LogWarning(path + " is not a valid path.");
+				Debug.LogWarning(san + " is not a valid path.");
 				return;
 			}
 

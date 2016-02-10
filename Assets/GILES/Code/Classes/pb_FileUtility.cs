@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using System.Text.RegularExpressions;
 
 namespace GILES
 {
@@ -75,7 +76,9 @@ namespace GILES
 		public static string SanitizePath(string path)
 		{
 			string rep = GetFullPath(path);
-			rep = path.Replace("\\", "/");
+			// @todo On Windows this defaults to '\', but doesn't escape correctly.
+			// Path.DirectorySeparatorChar.ToString());
+			rep = Regex.Replace(rep, "(\\\\|\\\\\\\\){1,2}|(/)", "/");
 			return rep;
 		}
 	}
