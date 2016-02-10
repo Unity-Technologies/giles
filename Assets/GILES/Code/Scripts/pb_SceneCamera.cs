@@ -269,7 +269,11 @@ namespace GILES
 
 				transform.position += transform.forward * speed * Input.GetAxis("Vertical");
 				transform.position += transform.right * speed * Input.GetAxis("Horizontal");
-				transform.position += transform.up * speed * Input.GetAxis("CameraUp");
+				try {
+					transform.position += transform.up * speed * Input.GetAxis("CameraUp");
+				} catch {
+					Debug.LogWarning("CameraUp input is not configured.  Open \"Edit/Project Settings/Input\" and add an input named \"CameraUp\", mapping q and e to Negative and Positive buttons.");
+				}
 
 				pivot = transform.position + transform.forward * distanceToCamera;
 			}
