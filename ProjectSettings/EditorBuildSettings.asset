@@ -6,10 +6,8 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/GILES/Example/Main Menu.unity
+    path: Assets/GILES/Scenes/Main Menu.unity
   - enabled: 1
-    path: Assets/GILES/Example/Level Editor.unity
-  - enabled: 0
-    path: Assets/Scenes/Debug/ExampleScene.unity
+    path: Assets/GILES/Scenes/Level Editor.unity
   - enabled: 1
-    path: Assets/GILES/Example/Scene Staging.unity
+    path: Assets/GILES/Scenes/Empty Scene.unity

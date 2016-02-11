@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿#if !UNITY_5_2
+
+using UnityEngine;
 using UnityEditor;
 using NUnit.Framework;
 
@@ -35,3 +37,5 @@ namespace GILES.Test
 		}
 	}
 }
+
+#endif

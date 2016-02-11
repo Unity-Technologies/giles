@@ -24,10 +24,14 @@
             ]
         },
         {
-        	"path":"docs"
+            "path":"Assets/Tests",
+            "file_exclude_patterns":
+            [
+                "*.meta"
+            ]
         },
         {
-            "path":"Assets/Tests"
+        	"path":"docs"
         }
     ]
 }

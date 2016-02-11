@@ -10,13 +10,13 @@ namespace GILES.Example
 	/**
 	 * Simple example of a scene loading script.
 	 */
-	public class SceneLoader : pb_MonoBehaviourSingleton<SceneLoader>
+	public class pb_SceneLoader : pb_MonoBehaviourSingleton<pb_SceneLoader>
 	{
 		/// Make this object persistent between scene loads.
 		public override bool dontDestroyOnLoad { get { return true; } }
 
 		/// The scene that will be opened and loaded into.
-		public string sceneToLoadLevelInto;
+		public string sceneToLoadLevelInto = "Empty Scene";
 
 		[HideInInspector] [SerializeField] private string json = null;
 
@@ -25,7 +25,7 @@ namespace GILES.Example
 		 */
 		public static void LoadScene(string path)
 		{
-	 		string san = pb_FileUtility.SanitizePath(path);
+	 		string san = pb_FileUtility.SanitizePath(path, ".json");
 
 			if(!pb_FileUtility.IsValidPath(san, ".json"))
 			{

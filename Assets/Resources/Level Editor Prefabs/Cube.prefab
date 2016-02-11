@@ -80,6 +80,7 @@ MonoBehaviour:
       assetBundleName: 
       filePath: 
     _assetType: 0
+    tags: []
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

@@ -4,3 +4,4 @@ theme: readthedocs
 pages:
 - Home: index.md
 - Tutorial: tutorial/quickstart.md
+- Adding Resources: tutorial/resources.md

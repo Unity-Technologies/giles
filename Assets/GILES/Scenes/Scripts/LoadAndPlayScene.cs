@@ -29,7 +29,7 @@ namespace GILES.Example
 
 		private void OnOpen(string path)
 		{
-			SceneLoader.LoadScene(path);
+			pb_SceneLoader.LoadScene(path);
 		}
 	}
 }
