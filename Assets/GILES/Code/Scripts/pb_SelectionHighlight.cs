@@ -9,7 +9,7 @@ namespace GILES
 	 */
 	[pb_JsonIgnore]
 	[pb_EditorComponent]
-	public class Highlight : MonoBehaviour
+	public class pb_SelectionHighlight : MonoBehaviour
 	{
 		enum HighlightType
 		{

@@ -157,12 +157,12 @@ namespace GILES
 
 		private void _InitializeSelected(GameObject go)
 		{
-			go.AddComponent<Highlight>();
+			go.AddComponent<pb_SelectionHighlight>();
 		}
 
 		private void _DeinitializeSelected(GameObject go)
 		{
-			Highlight highlight = go.GetComponent<Highlight>();
+			pb_SelectionHighlight highlight = go.GetComponent<pb_SelectionHighlight>();
 
 			if(highlight != null)
 				pb_ObjectUtility.Destroy(highlight);
@@ -184,7 +184,7 @@ namespace GILES
 		{
 			if(go != null && _gameObjects.Contains(go) )
 			{
-				pb_ObjectUtility.Destroy(go.GetComponent<Highlight>());
+				pb_ObjectUtility.Destroy(go.GetComponent<pb_SelectionHighlight>());
 				_gameObjects.Remove(go);
 
 				return true;
