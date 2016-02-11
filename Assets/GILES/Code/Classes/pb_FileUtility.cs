@@ -73,12 +73,23 @@ namespace GILES
 		/**
 		 * Replace backslashes with forward slashes, and make sure that path is the full path.
 		 */
-		public static string SanitizePath(string path)
+		public static string SanitizePath(string path, string extension = null)
 		{
 			string rep = GetFullPath(path);
 			// @todo On Windows this defaults to '\', but doesn't escape correctly.
 			// Path.DirectorySeparatorChar.ToString());
 			rep = Regex.Replace(rep, "(\\\\|\\\\\\\\){1,2}|(/)", "/");
+			// white space gets the escaped symbol
+			rep = Regex.Replace(rep, "\\s", "%20");
+
+			if(extension != null && !rep.EndsWith(extension))
+			{
+				if(!extension.StartsWith("."))
+					extension = "." + extension;
+
+				rep += extension;
+			}
+
 			return rep;
 		}
 	}
