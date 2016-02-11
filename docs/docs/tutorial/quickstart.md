@@ -48,3 +48,6 @@ Now that the Level Editor is accessible and running, you'll need some building b
 ![Resources / Level Editor Prefabs](resources_leveleditorprefabs.png)
 
 If there is not a `pb_MetaDataComponent` on the prefab, make sure that the folder names are correct (capitalization matters) and that the object is a prefab (Assets are not allowed).
+
+The alternative method involves creating [Asset Bundles](http://docs.unity3d.com/Manual/AssetBundlesIntro.html).  These are handy for when you want to ship additional resource packs separate from the main game.  Check out [@todo](resources.md) for more information on building Asset Bundles.
+
