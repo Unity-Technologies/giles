@@ -67,8 +67,23 @@ namespace GILES.Interface
 					(!showUnityComponents && pb_Config.IgnoredComponentsInInspector.Contains(component.GetType())))
 					continue;
 
-				GameObject panel = pb_GUIUtility.CreateLabeledVerticalPanel(component.GetType().ToString());
-				panel.transform.SetParent(inspectorScrollPanel.transform);
+                string panelLabelTitleString = component.GetType().ToString();
+
+                //check if the component has the custom inspector name attribute
+                if (component.GetType().GetCustomAttributes(typeof(pb_InspectorNameAttribute), true).Length > 0)
+                {
+                    //get first instance of the attribute.
+                    pb_InspectorNameAttribute attr = (pb_InspectorNameAttribute)component.GetType().GetCustomAttributes(typeof(pb_InspectorNameAttribute), true)[0];
+
+                    if (attr.name != null && attr.name.Length > 0)
+                    {
+                        panelLabelTitleString = attr.name; //set the title to the name set on the attribute
+                    }
+
+                }
+
+                GameObject panel = pb_GUIUtility.CreateLabeledVerticalPanel(panelLabelTitleString);
+                panel.transform.SetParent(inspectorScrollPanel.transform);
 
 				pb_ComponentEditor inspector = null;
 
