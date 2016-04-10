@@ -160,6 +160,7 @@ namespace GILES
 			typeof(UnityEngine.EventSystems.PointerInputModule),
 			typeof(UnityEngine.EventSystems.StandaloneInputModule),
 #if UNITY_5_2
+			// @todo drop unity 5.2 support
 			typeof(UnityEngine.EventSystems.TouchInputModule),
 #endif
 			typeof(UnityEngine.EventSystems.BaseRaycaster),

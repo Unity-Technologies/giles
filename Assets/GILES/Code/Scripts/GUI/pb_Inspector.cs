@@ -27,6 +27,25 @@ namespace GILES.Interface
 		/// A cache of the currently active component editors in the inspector.
 		private List<pb_ComponentEditor> componentEditors = new List<pb_ComponentEditor>();
 
+		/// A collection of types to ignore in the inspector (in addition to the pre-defined ones in pb_Config).
+		private static HashSet<System.Type> userIgnoredTypes = new HashSet<System.Type>();
+
+		/**
+		 *	Add a type to be ignored by the pb_Inspector.
+		 */
+		public static void AddIgnoredType(System.Type type)
+		{
+			userIgnoredTypes.Add(type);
+		}
+
+		/**
+		 *	Remove a previously ignored type from the collection of types to skip when building an inspector.
+		 */
+		public static void RemoveIgnoredType(System.Type type)
+		{
+			userIgnoredTypes.Remove(type);
+		}
+
 		void Start()
 		{
 			pb_Selection.AddOnSelectionChangeListener(OnSelectionChange);
@@ -62,6 +81,7 @@ namespace GILES.Interface
 			foreach(Component component in go.GetComponents<Component>())
 			{
 				if(	component == null ||
+					userIgnoredTypes.Contains(component.GetType()) ||
 					pb_Reflection.HasIgnoredAttribute(component.GetType()) ||
 					System.Attribute.GetCustomAttribute(component.GetType(), typeof(pb_InspectorIgnoreAttribute)) != null ||
 					(!showUnityComponents && pb_Config.IgnoredComponentsInInspector.Contains(component.GetType())))
