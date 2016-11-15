@@ -32,6 +32,19 @@
         },
         {
         	"path":"docs"
+        },
+        {
+        	"path":".",
+        	"folder_exclude_patterns":
+        	[
+        		"*"
+        	],
+        	"file_exclude_patterns":
+        	[
+        		"*.csproj",
+        		"*.sln",
+        		"*.png"
+        	]
         }
     ]
 }

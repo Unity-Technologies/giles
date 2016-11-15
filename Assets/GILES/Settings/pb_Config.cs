@@ -78,8 +78,8 @@ namespace GILES
 			typeof(UnityEngine.ParticleSystemRenderer),
 #if UNITY_5_2 || UNITY_5_3
 			typeof(UnityEngine.ParticleEmitter),
-#endif
 			typeof(UnityEngine.EllipsoidParticleEmitter),
+#endif
 			typeof(UnityEngine.MeshParticleEmitter),
 			typeof(UnityEngine.ParticleAnimator),
 			typeof(UnityEngine.ParticleRenderer),

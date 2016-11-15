@@ -37,22 +37,13 @@ namespace GILES.Example
 				instance.json = pb_FileUtility.ReadFile(san);
 			}
 
-#if !UNITY_5_2
 			SceneManager.LoadScene(instance.sceneToLoadLevelInto);
-#else
-			Application.LoadLevel(instance.sceneToLoadLevelInto);
-#endif
 		}
 
 		private void OnLevelWasLoaded(int i)
 		{
-#if !UNITY_5_2
 			if( SceneManager.GetActiveScene().name == sceneToLoadLevelInto && !string.IsNullOrEmpty(json))
 				pb_Scene.LoadLevel(json);
-#else
-			if( Application.loadedLevelName == sceneToLoadLevelInto && !string.IsNullOrEmpty(json))
-				pb_Scene.LoadLevel(json);
-#endif
 		}
 	}
 }

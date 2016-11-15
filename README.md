@@ -1,4 +1,5 @@
 # giles
+
 ### A Runtime Level Editor for Unity3D
 
 ![giles](giles.png)
@@ -21,7 +22,7 @@ Out of the box here's what GILES provides:
 
 ## Quick Start
 
-- Install **Unity 5.2** or greater.
+- Install **Unity 5.3** or greater.
 - Open **GILES** project.
 - Open *GILES/Example/Level Editor*
 
