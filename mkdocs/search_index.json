@@ -1,0 +1,74 @@
+{
+    "docs": [
+        {
+            "location": "/", 
+            "text": "G.I.L.E.S.\n\n\nA Runtime Level Editor for Unity3D\n.\n\n\nIMPORTANT\n  This project is under active development, and not guaranteed to be stable.  The API will change as work proceeds.\n\n\nQuick Start\n\n\n\n\nInstall \nUnity 5.2\n or greater.\n\n\nOpen \nGILES\n project.\n\n\nOpen \nGILES/Example/Level Editor\n\n\n\n\nContributing\n\n\nBug reports should be submitted to the Issues queue on Github.  Feature requests should be either posted on the \nforums\n or contributed via pull request.\n\n\nPull requests are welcome.\n\n\nLicense\n\n\nSee \nUnity Asset Store EULA\n.\n\n\nIn short - you are free to ship your game using GILES, but do not distribute GILES with source code.", 
+            "title": "Home"
+        }, 
+        {
+            "location": "/#giles", 
+            "text": "A Runtime Level Editor for Unity3D .  IMPORTANT   This project is under active development, and not guaranteed to be stable.  The API will change as work proceeds.", 
+            "title": "G.I.L.E.S."
+        }, 
+        {
+            "location": "/#quick-start", 
+            "text": "Install  Unity 5.2  or greater.  Open  GILES  project.  Open  GILES/Example/Level Editor", 
+            "title": "Quick Start"
+        }, 
+        {
+            "location": "/#contributing", 
+            "text": "Bug reports should be submitted to the Issues queue on Github.  Feature requests should be either posted on the  forums  or contributed via pull request.  Pull requests are welcome.", 
+            "title": "Contributing"
+        }, 
+        {
+            "location": "/#license", 
+            "text": "See  Unity Asset Store EULA .  In short - you are free to ship your game using GILES, but do not distribute GILES with source code.", 
+            "title": "License"
+        }, 
+        {
+            "location": "/tutorial/quickstart/", 
+            "text": "Quick Start Tutorial\n\n\nThis guide will take you through the basic steps involved in getting \nGILES\n up and running in your project.\n\n\nInstall\n\n\nThe first step to integrating \nGILES\n is to import the \ngiles.unitypackage\n file into your Unity project.  If you have installed \nGILES\n from the Asset Store, this step should be taken care of for you.  If you've downloaded \nGILES\n from Github or the User Toolbox, you'll need to open your Unity project and drag the \n.unitypackage\n into your \nProjet\n pane.  Make sure that all the assets are selected in the Package Import window.\n\n\n\n\nSet the .NET Profile\n\n\nIf after importing \nGILES\n there are now errors in the Console, don't fret.  This just means that your Api Compatibility Level is set to \n.NET 2.0 Subset\n.\n\n\nOpen \nEdit \n Project Settings \n Player\n and in the Inspector change \nApi Compatibility Level\n to \n.NET 2.0\n.\n\n\nAdd the Level Editor Scene\n\n\nNext you'll need to make the \nLevel Editor\n scene available for users to access.  For this tutorial we'll just open the Level Editor to a new level every time, though it is possible to set up a modal window to select an existing level to edit.  That scenario will be covered in a later tutorial (plus the default Level Editor scene includes a menu item to open a file browser).\n\n\nThe process is just like adding any other scene to your project:\n\n\n\n\nOpen \nFile / Build Settings\n.\n\n\nAdd \nGILES / Example / Level Editor\n to the \nScenes In Build\n list.\n\n\n\n\nNow in your menu scene simply open the \"Level Editor\" scene.  Check out \nGILES / Scenes / Main Menu\n for a demonstration of this (specifically, in the hierarchy \nCanvas/Panel_Background/Buttons/Btn_LoadMapEditor\n).\n\n\n// Unity 5.3 or greater\nSceneManager.LoadScene(\nLevel Editor\n);\n\n// Or in Unity 5.2\nApplication.LoadLevel(\nLevel Editor\n);\n\n\n\n\nThat's it!  The Level Editor is now accessible and ready to start building new levels.  The next step is to give the player some blocks to build with.\n\n\nAdding Resources to the Editor\n\n\nNow that the Level Editor is accessible and running, you'll need some building blocks to populate those levels. \n\n\nGILES\n provides 2 ways of making resoures available to the player.  The first (and easiest) method is to use the \nResources / Level Editor Prefabs\n folder.\n\n\n\n\nCreate a new folder named \nResources\n.\n\n\nInside that folder, add a new folder named \nLevel Editor Prefabs\n.\n\n\nDrag a prefab into the \nResources/Level Editor Prefabs\n folder.  \nGILES\n will automatically recognize this as a new resource and tag it with a \npb_MetaDataComponent\n.\n\n\n\n\n\n\nIf there is not a \npb_MetaDataComponent\n on the prefab, make sure that the folder names are correct (capitalization matters) and that the object is a prefab (Assets are not allowed).\n\n\nThe alternative method involves creating \nAsset Bundles\n.  These are handy for when you want to ship additional resource packs separate from the main game.  Check out \nAdding Resources\n for more information on building Asset Bundles.\n\n\nLoading a Saved Scene\n\n\nNow that the player has built a level, you'll need to load and play it somehow.  In summary, you'll load a new scene then ask \nGILES\n to instantiate all the objects in a \n.json\n scene file.  It's easy to extend this to include whatever custom loading steps you'd like, but if you just want to load a new scene \nGILES\n includes a utility script named \npb_SceneLoader.cs\n that makes this super simple.  For this tutorial, we'll use the \npb_SceneLoader\n approach.\n\n\nSomewhere in your main menu, hook up a button to call \n\n\n// Where the argument is a relative or absolute path to your a saved level.\npb_SceneLoader.LoadScene(\nAssets/MySavedLevel.json\n);\n\n\n\n\npb_SceneLoader\n is a singleton, so there's no need to worry about instantiating or managing it's lifecycle.\n\n\nThat's it! The \npb_SceneLoader\n singleton will handle opening a new scene for you and loading in the saved level.  If you get a black screen, chances are you either:\n\n\n\n\nDidn't include a camera object in the saved scene.\n\n\nDidn't include any lights in the saved scene.", 
+            "title": "Tutorial"
+        }, 
+        {
+            "location": "/tutorial/quickstart/#quick-start-tutorial", 
+            "text": "This guide will take you through the basic steps involved in getting  GILES  up and running in your project.", 
+            "title": "Quick Start Tutorial"
+        }, 
+        {
+            "location": "/tutorial/quickstart/#install", 
+            "text": "The first step to integrating  GILES  is to import the  giles.unitypackage  file into your Unity project.  If you have installed  GILES  from the Asset Store, this step should be taken care of for you.  If you've downloaded  GILES  from Github or the User Toolbox, you'll need to open your Unity project and drag the  .unitypackage  into your  Projet  pane.  Make sure that all the assets are selected in the Package Import window.", 
+            "title": "Install"
+        }, 
+        {
+            "location": "/tutorial/quickstart/#set-the-net-profile", 
+            "text": "If after importing  GILES  there are now errors in the Console, don't fret.  This just means that your Api Compatibility Level is set to  .NET 2.0 Subset .  Open  Edit   Project Settings   Player  and in the Inspector change  Api Compatibility Level  to  .NET 2.0 .", 
+            "title": "Set the .NET Profile"
+        }, 
+        {
+            "location": "/tutorial/quickstart/#add-the-level-editor-scene", 
+            "text": "Next you'll need to make the  Level Editor  scene available for users to access.  For this tutorial we'll just open the Level Editor to a new level every time, though it is possible to set up a modal window to select an existing level to edit.  That scenario will be covered in a later tutorial (plus the default Level Editor scene includes a menu item to open a file browser).  The process is just like adding any other scene to your project:   Open  File / Build Settings .  Add  GILES / Example / Level Editor  to the  Scenes In Build  list.   Now in your menu scene simply open the \"Level Editor\" scene.  Check out  GILES / Scenes / Main Menu  for a demonstration of this (specifically, in the hierarchy  Canvas/Panel_Background/Buttons/Btn_LoadMapEditor ).  // Unity 5.3 or greater\nSceneManager.LoadScene( Level Editor );\n\n// Or in Unity 5.2\nApplication.LoadLevel( Level Editor );  That's it!  The Level Editor is now accessible and ready to start building new levels.  The next step is to give the player some blocks to build with.", 
+            "title": "Add the Level Editor Scene"
+        }, 
+        {
+            "location": "/tutorial/quickstart/#adding-resources-to-the-editor", 
+            "text": "Now that the Level Editor is accessible and running, you'll need some building blocks to populate those levels.   GILES  provides 2 ways of making resoures available to the player.  The first (and easiest) method is to use the  Resources / Level Editor Prefabs  folder.   Create a new folder named  Resources .  Inside that folder, add a new folder named  Level Editor Prefabs .  Drag a prefab into the  Resources/Level Editor Prefabs  folder.   GILES  will automatically recognize this as a new resource and tag it with a  pb_MetaDataComponent .    If there is not a  pb_MetaDataComponent  on the prefab, make sure that the folder names are correct (capitalization matters) and that the object is a prefab (Assets are not allowed).  The alternative method involves creating  Asset Bundles .  These are handy for when you want to ship additional resource packs separate from the main game.  Check out  Adding Resources  for more information on building Asset Bundles.", 
+            "title": "Adding Resources to the Editor"
+        }, 
+        {
+            "location": "/tutorial/quickstart/#loading-a-saved-scene", 
+            "text": "Now that the player has built a level, you'll need to load and play it somehow.  In summary, you'll load a new scene then ask  GILES  to instantiate all the objects in a  .json  scene file.  It's easy to extend this to include whatever custom loading steps you'd like, but if you just want to load a new scene  GILES  includes a utility script named  pb_SceneLoader.cs  that makes this super simple.  For this tutorial, we'll use the  pb_SceneLoader  approach.  Somewhere in your main menu, hook up a button to call   // Where the argument is a relative or absolute path to your a saved level.\npb_SceneLoader.LoadScene( Assets/MySavedLevel.json );  pb_SceneLoader  is a singleton, so there's no need to worry about instantiating or managing it's lifecycle.  That's it! The  pb_SceneLoader  singleton will handle opening a new scene for you and loading in the saved level.  If you get a black screen, chances are you either:   Didn't include a camera object in the saved scene.  Didn't include any lights in the saved scene.", 
+            "title": "Loading a Saved Scene"
+        }, 
+        {
+            "location": "/tutorial/resources/", 
+            "text": "@todo", 
+            "title": "Adding Resources"
+        }, 
+        {
+            "location": "/tutorial/resources/#todo", 
+            "text": "", 
+            "title": "@todo"
+        }
+    ]
+}
