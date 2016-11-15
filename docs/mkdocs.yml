@@ -1,0 +1,7 @@
+site_name: G.I.L.E.S. Documentation
+theme: readthedocs
+
+pages:
+- Home: index.md
+- Tutorial: tutorial/quickstart.md
+- Adding Resources: tutorial/resources.md

@@ -1,0 +1,50 @@
+{
+    "folders":
+    [
+        {
+            "path": "Assets/GILES",
+            "file_exclude_patterns":
+            [
+                "*.unity",
+                "*.guiskin",
+                "*.dll",
+                "*.meta" ,
+                "*.prefab" ,
+                "*.anim",
+                "*.physicMaterial",
+                "*.flare" ,
+                "*.cubemap" ,
+                "*.font" ,
+                "*.fontsettings" ,
+                "*.renderTexture"
+            ],
+            "folder_exclude_patterns":
+            [
+                "Resources"
+            ]
+        },
+        {
+            "path":"Assets/Tests",
+            "file_exclude_patterns":
+            [
+                "*.meta"
+            ]
+        },
+        {
+        	"path":"docs"
+        },
+        {
+        	"path":".",
+        	"folder_exclude_patterns":
+        	[
+        		"*"
+        	],
+        	"file_exclude_patterns":
+        	[
+        		"*.csproj",
+        		"*.sln",
+        		"*.png"
+        	]
+        }
+    ]
+}
