@@ -76,7 +76,9 @@ namespace GILES
 			typeof(UnityEngine.WindZone),
 			typeof(UnityEngine.ParticleSystem),
 			typeof(UnityEngine.ParticleSystemRenderer),
+#if UNITY_5_2 || UNITY_5_3
 			typeof(UnityEngine.ParticleEmitter),
+#endif
 			typeof(UnityEngine.EllipsoidParticleEmitter),
 			typeof(UnityEngine.MeshParticleEmitter),
 			typeof(UnityEngine.ParticleAnimator),

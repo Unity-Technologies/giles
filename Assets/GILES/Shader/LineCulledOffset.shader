@@ -1,3 +1,5 @@
+// Upgrade NOTE: replaced '_Object2World' with 'unity_ObjectToWorld'
+
 Shader "Custom/Cull Lines by Normal and Offset"
 {
 	Properties
@@ -50,7 +52,7 @@ Shader "Custom/Cull Lines by Normal and Offset"
 				o.pos *= .98;
 				o.pos = mul(UNITY_MATRIX_P, o.pos);
 
-				o.world = mul(_Object2World, v.vertex);
+				o.world = mul(unity_ObjectToWorld, v.vertex);
 				o.normal = UnityObjectToWorldNormal(v.normal);
 				o.color = v.color;
 

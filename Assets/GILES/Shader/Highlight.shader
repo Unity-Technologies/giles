@@ -1,3 +1,5 @@
+// Upgrade NOTE: replaced '_Object2World' with 'unity_ObjectToWorld'
+
 Shader "Custom/Highlight" 
 {
 	Properties
@@ -53,7 +55,7 @@ Shader "Custom/Highlight"
 				o.pos = mul(UNITY_MATRIX_P, o.pos);
 
 				o.normal = UnityObjectToWorldNormal(v.normal);
-                o.world = mul(_Object2World, v.vertex);
+                o.world = mul(unity_ObjectToWorld, v.vertex);
 
 				return o;
 			}

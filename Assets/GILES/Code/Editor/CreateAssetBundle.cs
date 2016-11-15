@@ -31,7 +31,9 @@ namespace GILES.UnityEditor
 				}
 			}
 
-			BuildPipeline.BuildAssetBundles("Assets/AssetBundles", BuildAssetBundleOptions.UncompressedAssetBundle | BuildAssetBundleOptions.ForceRebuildAssetBundle);
+			BuildPipeline.BuildAssetBundles("Assets/AssetBundles",
+				BuildAssetBundleOptions.UncompressedAssetBundle | BuildAssetBundleOptions.ForceRebuildAssetBundle,
+				EditorUserBuildSettings.activeBuildTarget );
 		}
 
 		private static void SetMetadata(string path, string name)

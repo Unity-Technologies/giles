@@ -16,37 +16,37 @@ namespace GILES
 		 *
 		 * http://wiki.unity3d.com/index.php?title=3d_Math_functions
 		 * Two non-parallel lines which may or may not touch each other have a point on each line which are closest
-		 * to each other. This function finds those two points. If the lines are not parallel, the function 
+		 * to each other. This function finds those two points. If the lines are not parallel, the function
 		 * outputs true, otherwise false.
 		 */
 		public static bool ClosestPointsOnTwoLines(Vector3 linePoint1, Vector3 lineVec1, Vector3 linePoint2, Vector3 lineVec2, out Vector3 closestPointLine1, out Vector3 closestPointLine2)
 		{
 			closestPointLine1 = Vector3.zero;
 			closestPointLine2 = Vector3.zero;
-	 
+
 			float a = Vector3.Dot(lineVec1, lineVec1);
 			float b = Vector3.Dot(lineVec1, lineVec2);
 			float e = Vector3.Dot(lineVec2, lineVec2);
-	 
+
 			float d = a*e - b*b;
-	 
+
 			//lines are not parallel
 			if(d != 0.0f){
-	 
+
 				Vector3 r = linePoint1 - linePoint2;
 				float c = Vector3.Dot(lineVec1, r);
 				float f = Vector3.Dot(lineVec2, r);
-	 
+
 				float s = (b*f - c*e) / d;
 				float t = (a*f - c*b) / d;
-	 
+
 				closestPointLine1 = linePoint1 + lineVec1 * s;
 				closestPointLine2 = linePoint2 + lineVec2 * t;
-	 
+
 				return true;
 			}
-
-			else{
+			else
+			{
 				return false;
 			}
 		}
@@ -152,7 +152,7 @@ namespace GILES
 		{
 			Camera cam = Camera.main;
 			if(!cam) return 1f;
-			Transform t = cam.transform;	
+			Transform t = cam.transform;
 			float z = Vector3.Dot(position-t.position, cam.transform.forward);
 			Vector3 lhs = cam.WorldToScreenPoint(t.position + (t.forward * z));
 			Vector3 rhs = cam.WorldToScreenPoint(t.position + (t.right + t.forward * z));
@@ -227,7 +227,7 @@ namespace GILES
 		{
 			Vector3[] vertices = mesh.vertices;
 			int[] triangles = mesh.triangles;
-			
+
 			float dist = Mathf.Infinity;
 			Vector3 point = Vector3.zero;
 			Vector3 a, b, c;
@@ -270,33 +270,33 @@ namespace GILES
 		 */
 		public static float DistancePointLineSegment(Vector2 p, Vector2 v, Vector2 w)
 		{
-			// lineStart = v 
+			// lineStart = v
 			// lineEnd = w
 			// point = p
 
 			// Return minimum distance between line segment vw and point p
 			float l2 = ((v.x - w.x)*(v.x - w.x)) + ((v.y - w.y)*(v.y - w.y));  // i.e. |w-v|^2 -  avoid a sqrt
-			
+
 			if (l2 == 0.0f) return Vector2.Distance(p, v);   // v == w case
-			
+
 			// Consider the line extending the segment, parameterized as v + t (w - v).
-			// We find projection of point p onto the line. 
+			// We find projection of point p onto the line.
 			// It falls where t = [(p-v) . (w-v)] / |w-v|^2
 			float t = Vector2.Dot(p - v, w - v) / l2;
 
 			if (t < 0.0)
 				return Vector2.Distance(p, v);       		// Beyond the 'v' end of the segment
-			else if (t > 1.0) 
+			else if (t > 1.0)
 				return Vector2.Distance(p, w);  			// Beyond the 'w' end of the segment
-			
+
 			Vector2 projection = v + t * (w - v);  	// Projection falls on the segment
-			
-			return Vector2.Distance(p, projection);	
+
+			return Vector2.Distance(p, projection);
 		}
 
 		/**
 		 * Returns true if the polygon contains point.  False otherwise.
-		 * Casts a ray from outside the bounds to the polygon and checks how 
+		 * Casts a ray from outside the bounds to the polygon and checks how
 		 * many edges are hit.
 		 * @param polygon A series of individual edges composing a polygon.  polygon length *must* be divisible by 2.
 		 */
@@ -329,7 +329,7 @@ namespace GILES
 				if( GetLineSegmentIntersect(rayStart, point, polygon[i], polygon[i+1]) )
 					collisions++;
 			}
-	
+
 			return collisions % 2 != 0;
 		}
 
