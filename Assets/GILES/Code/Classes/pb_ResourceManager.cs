@@ -2,6 +2,7 @@ using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.IO;
 
 namespace GILES
 {
@@ -13,6 +14,9 @@ namespace GILES
 	{
 		/// A lookup table of available prefabs in the resources folder.
 		Dictionary<string, GameObject> lookup = new Dictionary<string, GameObject>();
+
+		///A layout of all directories and sub directories
+		List<pb_DirectoryMap> directoryMaps = new List<pb_DirectoryMap>();
 
 		/**
 		 * Load all assets listed in pb_Config.Resource_Folder_Paths and populate a lookup table, then
@@ -26,23 +30,23 @@ namespace GILES
 			{
 				GameObject[] prefabs = Resources.LoadAll(resourceFolder).Select(x => x is GameObject ? (GameObject)x : null).Where(y => y != null).ToArray();
 
-#if ASSET_LOADER_DEBUG
+				#if ASSET_LOADER_DEBUG
 				System.Text.StringBuilder sb = new System.Text.StringBuilder();
 				sb.AppendLine("Loaded Resources: ");
-#endif
+				#endif
 
 				// Populate a dictionary to use as a lookup, then unload whatever isn't used
 				for(int i = 0; i < prefabs.Length; i++)
 				{
-#if ASSET_LOADER_DEBUG
+					#if ASSET_LOADER_DEBUG
 					sb.AppendLine(string.Format("{0,-50} : {1}", prefabs[i].name, prefabs[i].GetComponent<pb_MetaDataComponent>().metadata.fileId) );
-#endif
+					#endif
 					lookup.Add(prefabs[i].GetComponent<pb_MetaDataComponent>().metadata.fileId, prefabs[i]);
 				}
 
-#if ASSET_LOADER_DEBUG
+				#if ASSET_LOADER_DEBUG
 				Debug.Log(sb.ToString());
-#endif
+				#endif
 
 				Resources.UnloadUnusedAssets();
 			}
@@ -75,7 +79,7 @@ namespace GILES
 
 			switch(metadata.assetType)
 			{
-				case AssetType.Resource:
+			case AssetType.Resource:
 				{
 					if(instance.lookup.ContainsKey(metadata.fileId))
 					{
@@ -88,12 +92,12 @@ namespace GILES
 					}
 				}
 
-				case AssetType.Bundle:
+			case AssetType.Bundle:
 				{
 					return pb_AssetBundles.LoadAsset<GameObject>(metadata.assetBundlePath);
 				}
 
-				default:
+			default:
 				{
 					Debug.LogError("File not found from metadata: " + metadata);
 					return null;
@@ -108,6 +112,7 @@ namespace GILES
 		{
 			List<T> assets = new List<T>();
 
+
 			foreach(string path in pb_Config.Resource_Folder_Paths)
 			{
 				assets.AddRange( Resources.LoadAll<T>(path) );
@@ -119,11 +124,32 @@ namespace GILES
 				{
 					AssetBundle bundle = pb_AssetBundles.LoadAssetBundleWithName(bundleName);
 					assets.AddRange( bundle.LoadAllAssets<T>() );
+					Debug.Log("found bundle: " + assets.Count);
 				}
 				catch {}
 			}
 
 			return assets;
 		}
+
+		/**
+		 * Load a specific asset of type T and return.  Searches all directories listed in for first appearance of asset.
+		 */
+		public static T Load<T>(string name) where T : UnityEngine.Object
+		{
+			T asset = null;
+
+			foreach(string path in pb_Config.Resource_Folder_Paths)
+			{
+				asset = Resources.Load<T> (path + "/" + name);
+				if (asset != null) {
+					return asset;
+				}
+			}
+
+			return null;
+		}
+
+
 	}
 }
