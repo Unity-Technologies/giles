@@ -4,7 +4,6 @@ using Newtonsoft.Json.Serialization;
 using Newtonsoft.Json.Linq;
 using System.Reflection;
 using System;
-using System.Linq;
 
 namespace GILES.Serialization
 {
@@ -12,7 +11,7 @@ namespace GILES.Serialization
 	{
 		public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
 		{
-	        throw new NotImplementedException("Cannot write objects!");
+			throw new NotImplementedException("Cannot write objects!");
 		}
 
 		public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
@@ -20,7 +19,7 @@ namespace GILES.Serialization
 			JObject o = JObject.Load(reader);
 			Debug.Log("pb_ObjectContainer Converter:\n" + o.ToString());
 
-			var obj = o.GetValue("value").ToObject<dynamic>(serializer);
+			var obj = o.GetValue("value").ToObject(objectType, serializer);
 
 			return ((pb_ObjectWrapper)obj).GetValue();
 		}

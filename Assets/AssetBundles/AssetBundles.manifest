@@ -1,0 +1,7 @@
+ManifestFileVersion: 0
+CRC: 1256175042
+AssetBundleManifest:
+  AssetBundleInfos:
+    Info_0:
+      Name: sample.slo
+      Dependencies: {}

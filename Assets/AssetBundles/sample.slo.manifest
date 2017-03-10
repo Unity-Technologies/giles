@@ -1,0 +1,35 @@
+ManifestFileVersion: 0
+CRC: 4130073870
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 3eaee4e1f9fde8a2422524ac58d4630c
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 1d14c69d2b628eecb355a842fd260673
+HashAppended: 0
+ClassTypes:
+- Class: 1
+  Script: {instanceID: 0}
+- Class: 4
+  Script: {instanceID: 0}
+- Class: 21
+  Script: {instanceID: 0}
+- Class: 23
+  Script: {instanceID: 0}
+- Class: 33
+  Script: {instanceID: 0}
+- Class: 43
+  Script: {instanceID: 0}
+- Class: 48
+  Script: {instanceID: 0}
+- Class: 114
+  Script: {fileID: 11500000, guid: 5a61987817fbe4b45a87582bcb2be501, type: 3}
+- Class: 115
+  Script: {instanceID: 0}
+Assets:
+- Assets/Resources/Level Editor Prefabs/Cube.prefab
+- Assets/Resources/Level Editor Prefabs/Hole.prefab
+- Assets/Resources/Level Editor Prefabs/Flat.prefab
+- Assets/Resources/Level Editor Prefabs/Column.prefab
+Dependencies: []

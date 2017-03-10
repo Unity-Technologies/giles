@@ -13,6 +13,21 @@ namespace GILES
 		public const int ASSET_MENU_ORDER = 800;
 
 		/**
+		 * Folder that contains default assets
+		 */
+		public static readonly string Default_Folder_Path = "Defaults";
+
+		/**
+		 * Name of default thumbnail for a folder
+		 */
+		public static readonly string Default_Folder_Thumbnail = "DefaultFolderThumbnail";
+
+		/**
+		 * Name of default thumbnail for a folder
+		 */
+		public static readonly string Default_AssetBundle_Thumbnail = "DefaultAssetBundleThumbnail";
+
+		/**
 		 * When saving and loading levels using the Resources folder, the following subfolders will
 		 * searched for assets.
 		 */
@@ -28,7 +43,7 @@ namespace GILES
 		 */
 		public static readonly string[] AssetBundle_Names = new string[]
 		{
-			"TestAssets"
+			"sample.slo"
 		};
 
 		/**
@@ -119,9 +134,9 @@ namespace GILES
 			typeof(UnityEngine.PointEffector2D),
 			typeof(UnityEngine.PlatformEffector2D),
 			typeof(UnityEngine.SurfaceEffector2D),
-			typeof(UnityEngine.NavMeshAgent),
-			typeof(UnityEngine.NavMeshObstacle),
-			typeof(UnityEngine.OffMeshLink),
+			typeof(UnityEngine.AI.NavMeshAgent),
+			typeof(UnityEngine.AI.NavMeshObstacle),
+			typeof(UnityEngine.AI.OffMeshLink),
 			typeof(UnityEngine.AudioListener),
 			typeof(UnityEngine.AudioSource),
 			typeof(UnityEngine.AudioReverbZone),
