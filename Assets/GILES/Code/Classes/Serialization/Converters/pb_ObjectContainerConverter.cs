@@ -17,12 +17,12 @@ namespace GILES.Serialization
 
 		public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
 		{
-			JObject o = JObject.Load(reader);
-			Debug.Log("pb_ObjectContainer Converter:\n" + o.ToString());
+	        throw new NotImplementedException("Cannot read objects!");
 
-			var obj = o.GetValue("value").ToObject<dynamic>(serializer);
-
-			return ((pb_ObjectWrapper)obj).GetValue();
+			// @todo - #16
+			// JObject o = JObject.Load(reader);
+			// var obj = o.GetValue("value").ToObject<dynamic>(serializer);
+			// return ((pb_ObjectWrapper)obj).GetValue();
 		}
 
 		public override bool CanConvert(Type objectType)
