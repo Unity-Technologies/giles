@@ -30,11 +30,3 @@ Out of the box here's what GILES provides:
 ## Contributing
 
 Bug reports should be submitted to the Issues queue on Github.  Feature requests should be either posted on the [forums](http://www.protoolsforunity3d.com/forum/) or contributed via pull request.
-
-## License
-
-See [Unity Asset Store EULA](https://unity3d.com/legal/as_terms).
-
-In short - you are free to ship your game using GILES, but do not distribute GILES as source code.
-
-When GILES moves out of beta it will become a paid product.  You are however free to continue using GILES at it's current state (eg, when GILES becomes a paid product we won't revoke the license to use the version you're currently using; it simply means updates will no longer be free).
