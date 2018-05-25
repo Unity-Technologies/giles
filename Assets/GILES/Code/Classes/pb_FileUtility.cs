@@ -3,6 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Text.RegularExpressions;
+using System.Text;
+using System.IO.Compression;
 
 namespace GILES
 {
@@ -25,7 +27,7 @@ namespace GILES
 				return "";
 			}
 
-			string contents = File.ReadAllText(p);
+            string contents = Unzip(File.ReadAllBytes(p));
 
 			return contents;
 		}
@@ -40,7 +42,7 @@ namespace GILES
                 string p = Path.GetFullPath(path);
                 p = p.Replace(" ", "\\ ");
                 p = p.Replace("%20", " ");
-				File.WriteAllText(p, contents);
+                File.WriteAllBytes(p, Zip(contents));
 			} 
 			catch(System.Exception e)
 			{
@@ -51,7 +53,51 @@ namespace GILES
 			return true;
 		}
 
-		public static bool IsValidPath(string path, string extension)
+        public static void CopyTo(Stream src, Stream dest)
+        {
+            byte[] bytes = new byte[4096];
+
+            int cnt;
+
+            while ((cnt = src.Read(bytes, 0, bytes.Length)) != 0)
+            {
+                dest.Write(bytes, 0, cnt);
+            }
+        }
+
+        public static byte[] Zip(string str)
+        {
+            var bytes = Encoding.UTF8.GetBytes(str);
+
+            using (var msi = new MemoryStream(bytes))
+            using (var mso = new MemoryStream())
+            {
+                using (var gs = new GZipStream(mso, CompressionMode.Compress))
+                {
+                    //msi.CopyTo(gs);
+                    CopyTo(msi, gs);
+                }
+
+                return mso.ToArray();
+            }
+        }
+
+        public static string Unzip(byte[] bytes)
+        {
+            using (var msi = new MemoryStream(bytes))
+            using (var mso = new MemoryStream())
+            {
+                using (var gs = new GZipStream(msi, CompressionMode.Decompress))
+                {
+                    //gs.CopyTo(mso);
+                    CopyTo(gs, mso);
+                }
+
+                return Encoding.UTF8.GetString(mso.ToArray());
+            }
+        }
+
+        public static bool IsValidPath(string path, string extension)
 		{
 			return !string.IsNullOrEmpty(path) && 
 				System.Uri.IsWellFormedUriString(path, System.UriKind.RelativeOrAbsolute) && 
