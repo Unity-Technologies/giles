@@ -22,7 +22,7 @@ Out of the box here's what GILES provides:
 
 ## Quick Start
 
-- Install **Unity 5.3** or greater.
+- Install **Unity 2017.1** or greater.
 - In Player Settings, set "API Compatibility Level" to ".NET 2.0"
 - Open **GILES** project.
 - Open *GILES/Example/Level Editor*
