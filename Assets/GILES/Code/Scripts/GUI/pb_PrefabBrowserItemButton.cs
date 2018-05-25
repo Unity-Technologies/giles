@@ -54,7 +54,7 @@ namespace GILES.Interface
 				if(_renderTexture == null)
 				{
 					_renderTexture = new RenderTexture(PreviewWidth, PreviewHeight, 0, RenderTextureFormat.Default, RenderTextureReadWrite.Default);
-					_renderTexture.generateMips = false;
+					_renderTexture.autoGenerateMips = false;
 					_renderTexture.useMipMap = false;
 				}
 

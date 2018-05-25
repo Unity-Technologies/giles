@@ -1,3 +1,5 @@
+// Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
+
 // Upgrade NOTE: replaced '_Object2World' with 'unity_ObjectToWorld'
 
 Shader "Custom/Cull Lines by Normal"
@@ -46,7 +48,7 @@ Shader "Custom/Cull Lines by Normal"
 			{
 				v2f o;
 
-				o.pos = mul(UNITY_MATRIX_MVP, v.vertex);
+				o.pos = UnityObjectToClipPos(v.vertex);
 				o.world = mul(unity_ObjectToWorld, v.vertex);
 				o.normal = UnityObjectToWorldNormal(v.normal);
 				o.color = v.color;
