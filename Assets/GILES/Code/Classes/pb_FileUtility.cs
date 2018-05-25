@@ -16,13 +16,16 @@ namespace GILES
 		 */
 		public static string ReadFile(string path)
 		{
-			if( !File.Exists(path))
+            string p = Path.GetFullPath(path);
+            p = p.Replace(" ", "\\ ");
+            p = p.Replace("%20", " ");
+            if ( !File.Exists(p))
 			{
-				Debug.LogError("File path does not exist!\n" + path);
+				Debug.LogError("File path does not exist!\n" + p);
 				return "";
 			}
 
-			string contents = File.ReadAllText(path);
+			string contents = File.ReadAllText(p);
 
 			return contents;
 		}
@@ -34,7 +37,10 @@ namespace GILES
 		{
 			try
 			{
-				File.WriteAllText(path, contents);
+                string p = Path.GetFullPath(path);
+                p = p.Replace(" ", "\\ ");
+                p = p.Replace("%20", " ");
+				File.WriteAllText(p, contents);
 			} 
 			catch(System.Exception e)
 			{
