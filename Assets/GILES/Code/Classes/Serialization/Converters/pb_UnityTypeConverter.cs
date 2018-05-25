@@ -41,7 +41,7 @@ namespace GILES.Serialization
 			JObject o = JObject.Load(reader);
 
 			JProperty type = o.Property("$type");
-
+            
 			if(type != null)
 			{
 				System.Type t = Type.GetType(type.Value.ToString());
