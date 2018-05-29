@@ -93,7 +93,9 @@ namespace GILES.Interface
 			GameObject go = new GameObject();
 			go.name = "Label Field";
 			Text field = go.AddComponent<Text>();
-			field.text = text;
+			string temp = text.Replace("UnityEngine.","");
+			field.text = temp; //This removes the UnityEngine. Prefix from the Inspector.
+			//field.text = text;
 			field.font = pb_GUIUtility.DefaultFont();
 			go.AddComponent<LayoutElement>().minHeight = 24;
 			field.alignment = TextAnchor.MiddleLeft;
