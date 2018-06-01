@@ -15,7 +15,7 @@ namespace GILES.Interface
 	{
 		object value;
 		
-		private static readonly RectOffset RectOffset_Zero = new RectOffset(0,0,0,0);
+		//private static readonly RectOffset RectOffset_Zero = new RectOffset(0,0,0,0);
 		private const int VERTICAL_LAYOUT_SPACING = 0;
 
 		void OnGUIChanged()
@@ -27,7 +27,7 @@ namespace GILES.Interface
 		{
 			value = GetValue<object>();
 
-			pb_GUIUtility.AddVerticalLayoutGroup(gameObject, RectOffset_Zero, VERTICAL_LAYOUT_SPACING, true, false);
+			pb_GUIUtility.AddVerticalLayoutGroup(gameObject, new RectOffset(0,0,0,0), VERTICAL_LAYOUT_SPACING, true, false);
 
 			BuildInspectorTree();
 		}
