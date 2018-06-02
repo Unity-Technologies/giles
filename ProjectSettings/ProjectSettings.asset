@@ -638,7 +638,8 @@ PlayerSettings:
     iOS: 0
   additionalIl2CppArgs: 
   scriptingRuntimeVersion: 0
-  apiCompatibilityLevelPerPlatform: {}
+  apiCompatibilityLevelPerPlatform:
+    Standalone: 1
   m_RenderingPath: 3
   m_MobileRenderingPath: 1
   metroPackageName: Oculus Test Scene
