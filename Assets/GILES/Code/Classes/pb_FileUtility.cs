@@ -47,8 +47,11 @@ namespace GILES
 
 		public static bool IsValidPath(string path, string extension)
 		{
+            Debug.Log("path:" + path);
+            if (!path.EndsWith(extension))
+                Debug.Log("Path not ends with extension");
 			return !string.IsNullOrEmpty(path) && 
-				System.Uri.IsWellFormedUriString(path, System.UriKind.RelativeOrAbsolute) && 
+				//!System.Uri.IsWellFormedUriString(path, System.UriKind.RelativeOrAbsolute) && 
 				path.EndsWith(extension);
 		}
 

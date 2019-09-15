@@ -12,11 +12,17 @@ namespace GILES
 	{
 		public const int ASSET_MENU_ORDER = 800;
 
-		/**
+        public static readonly string Default_Folder_Path = "Defaults";
+
+        public static readonly string Default_Folder_Thumbnail = "DefaultFolderThumbnail";
+
+        public static readonly string Default_AssetBundle_Thumbnai = "DefaultAssetBundleThumbnail";
+
+        /**
 		 * When saving and loading levels using the Resources folder, the following subfolders will
 		 * searched for assets.
 		 */
-		public static readonly string[] Resource_Folder_Paths = new string[]
+        public static readonly string[] Resource_Folder_Paths = new string[]
 		{
 			"Level Editor Prefabs"
 		};
@@ -28,7 +34,7 @@ namespace GILES
 		 */
 		public static readonly string[] AssetBundle_Names = new string[]
 		{
-			"TestAssets"
+			"sample.slo"
 		};
 
 		/**
@@ -58,12 +64,11 @@ namespace GILES
 			typeof(UnityEngine.GUIElement),
 			typeof(UnityEngine.UI.Image),
 			//typeof(UnityEngine.GUITexture),
-			typeof(UnityEngine.GUILayer),
 			typeof(UnityEngine.ReflectionProbe),
 			typeof(UnityEngine.LODGroup),
 			typeof(UnityEngine.FlareLayer),
 			typeof(UnityEngine.LightProbeGroup),
-			typeof(UnityEngine.NetworkView),
+			//typeof(UnityEngine.NetworkView),
 			typeof(UnityEngine.RectTransform),
 			typeof(UnityEngine.SpriteRenderer),
 			typeof(UnityEngine.Behaviour),
@@ -81,9 +86,9 @@ namespace GILES
 			typeof(UnityEngine.ParticleEmitter),
 			typeof(UnityEngine.EllipsoidParticleEmitter),
 #endif
-			typeof(UnityEngine.MeshParticleEmitter),
-			typeof(UnityEngine.ParticleAnimator),
-			typeof(UnityEngine.ParticleRenderer),
+			//typeof(UnityEngine.MeshParticleEmitter),
+			//typeof(UnityEngine.ParticleAnimator),
+			//typeof(UnityEngine.ParticleRenderer),
 			typeof(UnityEngine.Rigidbody),
 			typeof(UnityEngine.Joint),
 			typeof(UnityEngine.HingeJoint),
@@ -136,26 +141,11 @@ namespace GILES
 			typeof(UnityEngine.Animator),
 			typeof(UnityEngine.Terrain),
 			typeof(UnityEngine.Tree),
-			typeof(UnityEngine.GUIText),
 			typeof(UnityEngine.TextMesh),
 			typeof(UnityEngine.Canvas),
 			typeof(UnityEngine.CanvasGroup),
 			typeof(UnityEngine.CanvasRenderer),
 			typeof(UnityEngine.TerrainCollider),
-			typeof(UnityEngine.Networking.Match.NetworkMatch),
-			typeof(UnityEngine.Networking.NetworkAnimator),
-			typeof(UnityEngine.Networking.NetworkBehaviour),
-			typeof(UnityEngine.Networking.NetworkDiscovery),
-			typeof(UnityEngine.Networking.NetworkIdentity),
-			typeof(UnityEngine.Networking.NetworkLobbyManager),
-			typeof(UnityEngine.Networking.NetworkLobbyPlayer),
-			typeof(UnityEngine.Networking.NetworkManager),
-			typeof(UnityEngine.Networking.NetworkManagerHUD),
-			typeof(UnityEngine.Networking.NetworkProximityChecker),
-			typeof(UnityEngine.Networking.NetworkStartPosition),
-			typeof(UnityEngine.Networking.NetworkTransformChild),
-			typeof(UnityEngine.Networking.NetworkTransform),
-			typeof(UnityEngine.Networking.NetworkTransformVisualizer),
 			typeof(UnityEngine.EventSystems.EventSystem),
 			typeof(UnityEngine.EventSystems.EventTrigger),
 			typeof(UnityEngine.EventSystems.UIBehaviour),

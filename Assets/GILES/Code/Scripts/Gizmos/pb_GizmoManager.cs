@@ -26,7 +26,7 @@ namespace GILES
 
 			foreach(Type t in BuiltinGizmos)
 			{
-				 pb_GizmoAttribute attrib = (pb_GizmoAttribute) ((IEnumerable<Attribute>) t.GetCustomAttributes(true)).FirstOrDefault(x => x is pb_GizmoAttribute);
+				 pb_GizmoAttribute attrib = (pb_GizmoAttribute) ((IEnumerable<Attribute>) t.GetCustomAttributes(typeof (pb_GizmoAttribute) , true)).FirstOrDefault(x => x is pb_GizmoAttribute);
 
 				 if(attrib != null)
 					gizmoLookup.Add(attrib.type, t);

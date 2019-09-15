@@ -14,11 +14,14 @@ namespace GILES
 		/// A lookup table of available prefabs in the resources folder.
 		Dictionary<string, GameObject> lookup = new Dictionary<string, GameObject>();
 
-		/**
+        ///A layout of all directories and sub directories
+        List<pb_DirectoryMap> directoryMaps = new List<pb_DirectoryMap>();
+
+        /**
 		 * Load all assets listed in pb_Config.Resource_Folder_Paths and populate a lookup table, then
 		 * unload.
 		 */
-		protected override void OnEnable()
+        protected override void OnEnable()
 		{
 			base.OnEnable();
 
@@ -125,5 +128,19 @@ namespace GILES
 
 			return assets;
 		}
-	}
+        public static T Load<T>(string name) where T : UnityEngine.Object
+        {
+            T asset = null;
+
+            foreach (string path in pb_Config.Resource_Folder_Paths)
+            {
+                asset = Resources.Load<T>(path + "/" + name);
+                if (asset != null)
+                    return asset;
+            }
+            return null;
+        }
+    }
 }
+
+

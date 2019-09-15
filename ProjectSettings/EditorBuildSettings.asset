@@ -6,8 +6,12 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/GILES/Scenes/Main Menu.unity
+    path: Assets/GILES/Scenes/Empty Scene.unity
+    guid: e0421fea30c15da478141928e734e31c
   - enabled: 1
     path: Assets/GILES/Scenes/Level Editor.unity
+    guid: b0171d1d9fa113e4aa973deb5506ce6b
   - enabled: 1
-    path: Assets/GILES/Scenes/Empty Scene.unity
+    path: Assets/GILES/Scenes/Main Menu.unity
+    guid: 6864c384fd52d834c9000e8f52455d3c
+  m_configObjects: {}

@@ -10,26 +10,26 @@ namespace GILES.Interface
 	/**
 	 * Button implementation that shows a preview of an inspector prefab object.
 	 */
-	public class pb_PrefabBrowserItemButton : Button
+	public abstract class pb_PrefabBrowserItemButton : Button
 	{
-		const int PREVIEW_LAYER = 31;
-		const int PreviewWidth = 256;
-		const int PreviewHeight = 256;
+		protected static int PREVIEW_LAYER = 31;
+        protected static int PreviewWidth = 256;
+        protected static int PreviewHeight = 256;
 		public string prefabId = "";
-		private static readonly Quaternion CAMERA_VIEW_ANGLE = Quaternion.Euler(30f, -30f, 0f);
+        protected static readonly Quaternion CAMERA_VIEW_ANGLE = Quaternion.Euler(30f, -30f, 0f);
 		public GameObject asset;
 
-		public float cameraRotateSpeed = 50f;
-		private Quaternion cameraRotation = CAMERA_VIEW_ANGLE;
-		private RawImage previewComponent;
-		private bool doSpin = false;
-		private Texture2D previewImage;
-		private GameObject instance;
-		private Light[] sceneLights;
-		private bool[] lightWasEnabled = null;
+		//public float cameraRotateSpeed = 50f;
+		protected Quaternion cameraRotation = CAMERA_VIEW_ANGLE;
+        protected RawImage previewComponent;
+        //private bool doSpin = false;
+        protected Texture2D previewImage;
+        protected GameObject instance;
+        protected Light[] sceneLights;
+        protected bool[] lightWasEnabled = null;
 
-		private static Camera _previewCamera = null;
-		private static Camera previewCamera
+        protected static Camera _previewCamera = null;
+        protected static Camera previewCamera
 		{
 			get
 			{
@@ -46,8 +46,8 @@ namespace GILES.Interface
 			}
 		}
 
-		private static RenderTexture _renderTexture;
-		private static RenderTexture renderTexture
+        protected static RenderTexture _renderTexture;
+        protected static RenderTexture renderTexture
 		{
 			get
 			{
@@ -62,8 +62,8 @@ namespace GILES.Interface
 			}
 		}
 
-		private static Light _previewLightA = null;
-		private static Light previewLightA
+        protected static Light _previewLightA = null;
+        protected static Light previewLightA
 		{
 			get
 			{
@@ -81,8 +81,8 @@ namespace GILES.Interface
 			}
 		}
 
-		private static Light _previewLightB = null;
-		private static Light previewLightB
+        protected static Light _previewLightB = null;
+        protected static Light previewLightB
 		{
 			get
 			{
@@ -106,10 +106,10 @@ namespace GILES.Interface
 		protected override void Start()
 		{
 			base.Start();
-			onClick.AddListener( Instantiate );
+			onClick.AddListener(OnClick);
 		}
 
-		public void Initialize()
+		public virtual void Initialize()
 		{
 			prefabId = asset.DemandComponent<pb_MetaDataComponent>().GetFileId();
 
@@ -143,46 +143,12 @@ namespace GILES.Interface
 			}
 		}
 
-		void Update()
-		{
-			if(doSpin)
-			{
-				previewCamera.transform.RotateAround(Vector3.zero, Vector3.up, cameraRotateSpeed * Time.deltaTime);
-				RenderPreview();
-			}
-		}
 
-		/**
+
+        /**
 		 * Instantiate the inspected object in the scene.
 		 */
-		void Instantiate()
-		{
-			Camera cam = Camera.main;
-			GameObject go;
-
-			Vector3 org = pb_Selection.activeGameObject == null ? Vector3.zero : pb_Selection.activeGameObject.transform.position;
-			Vector3 nrm = pb_Selection.activeGameObject == null ? Vector3.up : pb_Selection.activeGameObject.transform.localRotation * Vector3.up;
-
-			Plane plane = new Plane(nrm, org);
-
-			Ray ray = new Ray(cam.transform.position, cam.transform.forward);
-
-			float hit = 0f;
-
-			if( plane.Raycast(ray, out hit))
-				go = (GameObject) pb_Scene.Instantiate(asset, pb_Snap.Snap(ray.GetPoint(hit), .25f), Quaternion.identity);
-			else
-				go = (GameObject) pb_Scene.Instantiate(asset, pb_Snap.Snap(ray.GetPoint(10f), .25f), Quaternion.identity);	
-
-			Undo.RegisterStates(new List<IUndo>() { new UndoSelection(), new UndoInstantiate(go) }, "Create new object");
-			
-			pb_Selection.SetSelection(go);
-			
-			bool curSelection = pb_Selection.activeGameObject != null;
-
-			if(!curSelection)
-				pb_SceneCamera.Focus(go);
-		}
+        protected abstract void OnClick();
 
 		public override void OnPointerEnter(PointerEventData eventData)
 		{
@@ -193,18 +159,12 @@ namespace GILES.Interface
 				return;
 
 			previewComponent.texture = renderTexture;
-
-			doSpin = true;
 		}
 
 		public override void OnPointerExit(PointerEventData eventData)
 		{
 			if(previewComponent == null)
 				return;
-
-			doSpin = false;
-
-			cameraRotation = previewCamera.transform.localRotation;
 
 			RenderPreview();
 
@@ -215,13 +175,10 @@ namespace GILES.Interface
 
 			RenderTexture.active = null;
 
-			renderTexture.DiscardContents();
-			renderTexture.Release();
-
-			pb_ObjectUtility.Destroy(instance);
+            DestroyInstance();
 		}
 
-		bool SetupAndRenderPreview(Texture2D texture)
+		protected virtual bool SetupAndRenderPreview(Texture2D texture)
 		{
 			if(!SetupPreviewRender())
 				return false;
@@ -233,15 +190,12 @@ namespace GILES.Interface
 
 			RenderTexture.active = null;
 
-			renderTexture.DiscardContents();
-			renderTexture.Release();
-
-			pb_ObjectUtility.Destroy(instance);
+            DestroyInstance();
 
 			return true;
 		}
 
-		bool SetupPreviewRender()
+		protected virtual bool SetupPreviewRender()
 		{
 			if(asset.GetComponent<Renderer>() == null) return false;
 
@@ -266,7 +220,7 @@ namespace GILES.Interface
 			return true;
 		}
 
-		void RenderPreview()
+		protected virtual void RenderPreview()
 		{
 			for(int i = 0; i < sceneLights.Length; i++)
 			{
@@ -293,5 +247,12 @@ namespace GILES.Interface
 				sceneLights[i].enabled = lightWasEnabled[i];
 			}
 		}
+
+        public virtual void DestroyInstance()
+        {
+            renderTexture.DiscardContents();
+            renderTexture.Release();
+            pb_ObjectUtility.Destroy(instance);
+        }
 	}
 }
