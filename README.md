@@ -30,3 +30,7 @@ Out of the box here's what GILES provides:
 ## Contributing
 
 Bug reports should be submitted to the Issues queue on Github.  Feature requests should be either posted on the [forums](http://www.protoolsforunity3d.com/forum/) or contributed via pull request.
+
+
+## Documentation
+https://github.com/FAL2009/giles/wiki
