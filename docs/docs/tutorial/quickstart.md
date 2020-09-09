@@ -4,7 +4,7 @@ This guide will take you through the basic steps involved in getting **GILES** u
 
 ### Install
 
-The first step to integrating **GILES** is to import the `giles.unitypackage` file into your Unity project.  If you have installed **GILES** from the Asset Store, this step should be taken care of for you.  If you've downloaded **GILES** from Github or the User Toolbox, you'll need to open your Unity project and drag the `.unitypackage` into your **Projet** pane.  Make sure that all the assets are selected in the Package Import window.
+The first step to integrating **GILES** is to import the `giles.unitypackage` file into your Unity project.  If you have installed **GILES** from the Asset Store, this step should be taken care of for you.  If you've downloaded **GILES** from Github or the User Toolbox, you'll need to open your Unity project and drag the `.unitypackage` into your **Project** panel.  Make sure that all the assets are selected in the Package Import window.
 
 ![Importing GILES](import.png)
 
