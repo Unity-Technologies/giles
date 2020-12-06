@@ -134,6 +134,7 @@ namespace GILES.Interface
                     CreateFileButton(go);
                 }
             }
+#if UNITY_2019
         }
 	}
 }
