@@ -13,7 +13,7 @@ namespace GILES.Interface
 	[pb_TypeInspector(typeof(object))]
 	public class pb_ObjectInspector : pb_TypeInspector
 	{
-		object value;
+        object value;
 		
 		//private static readonly RectOffset RectOffset_Zero = new RectOffset(0,0,0,0);
 		private const int VERTICAL_LAYOUT_SPACING = 0;
@@ -25,11 +25,11 @@ namespace GILES.Interface
 
 		public override void InitializeGUI()
 		{
-			value = GetValue<object>();
+                value = GetValue<object>();
 
-			pb_GUIUtility.AddVerticalLayoutGroup(gameObject, new RectOffset(0,0,0,0), VERTICAL_LAYOUT_SPACING, true, false);
+                pb_GUIUtility.AddVerticalLayoutGroup(gameObject, new RectOffset(0, 0, 0, 0), VERTICAL_LAYOUT_SPACING, true, false);
 
-			BuildInspectorTree();
+                BuildInspectorTree();
 		}
 
 		protected override void OnUpdateGUI()
@@ -66,4 +66,5 @@ namespace GILES.Interface
 			}
 		}
 	}
+
 }

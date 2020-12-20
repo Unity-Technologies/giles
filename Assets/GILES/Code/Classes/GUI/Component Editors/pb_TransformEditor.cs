@@ -18,7 +18,7 @@ namespace GILES.Interface
 
 			_transform = (Transform) target;
 
-			pb_TypeInspector position_inspector = pb_InspectorResolver.GetInspector(typeof(Vector3));
+		    pb_TypeInspector position_inspector = pb_InspectorResolver.GetInspector(typeof(Vector3));
 			pb_TypeInspector rotation_inspector = pb_InspectorResolver.GetInspector(typeof(Vector3));
 			pb_TypeInspector scale_inspector 	= pb_InspectorResolver.GetInspector(typeof(Vector3));
 
@@ -53,10 +53,13 @@ namespace GILES.Interface
 
 		void OnSetPosition(int index, object value)
 		{
-			_transform.position = (Vector3) value;
-			pb_Selection.OnExternalUpdate();
+            if (value != null)
+            {
+                _transform.position = (Vector3)value;
+                pb_Selection.OnExternalUpdate();
 
-			pb_ComponentDiff.AddDiff(target, "position", _transform.position);
+                pb_ComponentDiff.AddDiff(target, "position", _transform.position);
+            }
 		}
 
 		object UpdateRotation(int index)

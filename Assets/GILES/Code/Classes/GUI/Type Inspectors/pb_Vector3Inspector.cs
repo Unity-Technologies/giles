@@ -10,7 +10,7 @@ namespace GILES.Interface
 	[pb_TypeInspector(typeof(Vector3))]
 	public class pb_Vector3Inspector : pb_TypeInspector
 	{
-		Vector3 vector;
+		Vector3 vector = new Vector3();
 
 		public UnityEngine.UI.Text title;
 
@@ -41,7 +41,7 @@ namespace GILES.Interface
 
 		protected override void OnUpdateGUI()
 		{
-			vector = GetValue<Vector3>();
+            vector = GetValue<Vector3>();
 
 			input_x.text = vector.x.ToString();
 			input_y.text = vector.y.ToString();

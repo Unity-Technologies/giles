@@ -1,4 +1,4 @@
-# giles
+# giles 2020
 
 ### A Runtime Level Editor for Unity3D
 
@@ -22,11 +22,17 @@ Out of the box here's what GILES provides:
 
 ## Quick Start
 
-- Install **Unity 2017.1** or greater.
-- In Player Settings, set "API Compatibility Level" to ".NET 2.0"
+- Install **Unity 2019.2** or greater.
+- In Player Settings, set "API Compatibility Level" to ".NET 4.0"
 - Open **GILES** project.
 - Open *GILES/Example/Level Editor*
 
 ## Contributing
 
 Bug reports should be submitted to the Issues queue on Github.  Feature requests should be either posted on the [forums](http://www.protoolsforunity3d.com/forum/) or contributed via pull request.
+
+
+## Documentation
+https://github.com/FAL2009/giles/wiki
+
+## This Fork is not dead but slow in development because of missing time

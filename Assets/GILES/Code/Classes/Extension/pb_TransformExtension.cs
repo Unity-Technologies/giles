@@ -7,9 +7,10 @@ namespace GILES
 	 */
 	public static class pb_TransformExtension
 	{
-		/**
-		 * Set a UnityEngine.Transform with a Runtime.pb_Transform.
-		 */
+		///<summary>
+		/// Set a UnityEngine.Transform with a Runtime.pb_Transform.
+		///</summary>
+
 		public static void SetTRS(this Transform transform, pb_Transform pbTransform)
 		{
 			transform.position = pbTransform.position;

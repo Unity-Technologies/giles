@@ -5,9 +5,9 @@ namespace GILES
 {
 	public static class pb_ObjectUtility
 	{
-		/**
-		 * Add an empty gameObject as a child to `go`.
-		 */
+		///<summary>
+		/// Add an empty gameObject as a child to `go`.
+		///</summary>
 		public static GameObject AddChild(this GameObject go)
 		{
 			GameObject child = new GameObject();
@@ -15,16 +15,18 @@ namespace GILES
 			return child;
 		}
 
-		/**
-		 * Add an empty gameObject as a child to `trs`.
-		 */
+		///<summary>
+		/// Add an empty gameObject as a child to `trs`.
+		///</summary>
 		public static Transform AddChild(this Transform trs)
 		{
 			Transform go = new GameObject().GetComponent<Transform>();
 			go.SetParent(trs);
 			return go;
 		}
-
+		///<summary>
+		///Calculates the min dist. to the bounds.
+		///</summary>
 		public static float CalcMinDistanceToBounds(Camera cam, Bounds bounds)
 		{
 			float frustumHeight = Mathf.Max(Mathf.Max(bounds.size.x, bounds.size.y), bounds.size.z);
