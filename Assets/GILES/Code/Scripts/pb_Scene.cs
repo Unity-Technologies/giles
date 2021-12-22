@@ -52,9 +52,9 @@ namespace GILES
 		 */
 		public event Callback onLevelCleared;
 
-		/**
-		 * Notification when a new object is instantiated in the scene.
-		 */
+		/// <summary>
+		/// Notification when a new object is instantiated in the scene.
+		/// </summary>
 		public static void AddOnObjectInstantiatedListener(Callback<GameObject> listener)
 		{
 			if(instance.onObjectInstantiated == null)
@@ -62,10 +62,9 @@ namespace GILES
 			else
 				instance.onObjectInstantiated += listener;
 		}
-
-		/**
-		 * Add a callback to be notified when a pb_Scene is loaded from a file or JSON string.
-		 */
+		/// <summary>
+		/// Add a callback to be notified when a pb_Scene is loaded from a file or JSON string.
+		/// </summary>
 		public static void AddOnLevelLoadedListener(Callback listener)
 		{
 			if(instance.onLevelLoaded == null)
@@ -74,9 +73,10 @@ namespace GILES
 				instance.onLevelLoaded += listener;
 		}
 
-		/**
-		 * Add a callback to be notified when a pb_Scene is cleared.
-		 */
+
+		/// <summary>
+		///  Add a callback to be notified when a pb_Scene is cleared.
+		/// </summary>
 		public static void AddOnLevelClearedListener(Callback listener)
 		{
 			if(instance.onLevelCleared == null)
@@ -87,11 +87,11 @@ namespace GILES
 
 #endregion
 
-		/**
-		 * Wrapper around UnityEngine.GameObject.Instantiate() that makes sure the new object is correctly added
-		 * to the Level Editor scenegraph.  In order for objects to be saved and loaded properly, they must belong
-		 * to the scenegraph.
-		 */
+		/// <summary>
+		/// Wrapper around UnityEngine.GameObject.Instantiate() that makes sure the new object is correctly added
+		/// to the Level Editor scenegraph.  In order for objects to be saved and loaded properly, they must belong
+		/// to the scenegraph.
+		/// </summary>
 		public static UnityEngine.GameObject Instantiate(UnityEngine.GameObject original)
 		{
 			GameObject go = (GameObject) GameObject.Instantiate(original);
@@ -108,12 +108,11 @@ namespace GILES
 
 			return go;
 		}
-
-		/**
-		 * Wrapper around UnityEngine.GameObject.Instantiate() that makes sure the new object is correctly added
-		 * to the Level Editor scenegraph.  In order for objects to be saved and loaded properly, they must belong
-		 * to the scenegraph.
-		 */
+		/// <summary>
+		/// Wrapper around UnityEngine.GameObject.Instantiate() that makes sure the new object is correctly added
+		/// to the Level Editor scenegraph.  In order for objects to be saved and loaded properly, they must belong
+		/// to the scenegraph.
+		/// </summary>
 		public static UnityEngine.GameObject Instantiate(UnityEngine.GameObject original, Vector3 position, Quaternion rotation)
 		{
 			GameObject go = (GameObject) GameObject.Instantiate(original, position, rotation);
@@ -130,10 +129,9 @@ namespace GILES
 
 			return go;
 		}
-
-		/**
-		 *	Save the current level.  Returns a JSON formatted string with the entire scene-graph serialized.
-		 */
+		/// <summary>
+		/// Save the current level.  Returns a JSON formatted string with the entire scene-graph serialized.
+		/// </summary>
 		public static string SaveLevel()
 		{
 			pb_SceneNode rootNode = new pb_SceneNode(instance.gameObject);
@@ -144,9 +142,9 @@ namespace GILES
 			return scenegraph;
 		}
 
-		/**
-		 *	Load a saved level into the scene.  This clears the currently open scene.
-		 */
+		/// <summary>
+		/// Load a saved level into the scene.  This clears the currently open scene.
+		/// </summary>
 		public static void LoadLevel(string levelJson)
 		{
 			if(pb_Scene.nullableInstance != null)
@@ -173,9 +171,9 @@ namespace GILES
 				instance.onLevelLoaded();
 		}
 
-		/**
-		 * Destroy all children in the scene.
-		 */
+		/// <summary>
+		/// Destroy all children in the scene.
+		/// </summary>
 		public void Clear()
 		{
 			/// @todo don't reference pb_Selection in pb_Scene.
@@ -187,20 +185,19 @@ namespace GILES
 			if( onLevelCleared != null )
 				onLevelCleared();
 		}
-
-		/**
-		 * Recursively search a transform for children and return all of 'em as a list.
-		 * Does not include the root transform in list.
-		 */
+		/// <summary>
+		///  Recursively search a transform for children and return all of 'em as a list.
+		///  Does not include the root transform in list.
+		/// </summary>
 		public static List<GameObject> Children()
 		{
 			return instance.GetChildren(instance.transform);
 		}
 
-		/**
-		 * Recursively search a transform for children and return all of 'em as a list.
-		 * Does not include the root transform in list.
-		 */
+		/// <summary>
+		/// Recursively search a transform for children and return all of 'em as a list.
+		/// Does not include the root transform in list.
+		/// </summary>
 		private List<GameObject> GetChildren(Transform transform)
 		{
 			List<GameObject> children = new List<GameObject>();
