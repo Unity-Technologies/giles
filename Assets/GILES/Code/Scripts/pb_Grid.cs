@@ -30,9 +30,9 @@ namespace GILES
 			transform.position = Vector3.zero;
 		}
 
-		/**
-		 * Builds a grid object in 2d space
-		 */
+		/// <summary>
+		/// Builds a grid object in 2d space
+		/// </summary>
 		Mesh GridMesh(int lineCount, float scale)
 		{
 			float half = (lineCount/2f) * scale;
