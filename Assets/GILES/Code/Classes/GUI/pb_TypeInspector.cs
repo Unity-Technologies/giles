@@ -115,11 +115,7 @@ namespace GILES.Interface
 		 * Full initializer with parameters for array elements and a type param to force the element type (which can be necessary in the 
 		 * event that UpdateValue returns null and no declaring type is found).
 		 */
-		public void Initialize(	string name,
-								UpdateValue getStoredValueDelegate,
-								Callback<object> onValueChangedDelegate,
-								UpdateValueWithIndex getStoredValueDelegateIndexed,
-								Callback<int, object> onValueChangedDelegateIndexed )
+		public void Initialize(	string name,UpdateValue getStoredValueDelegate, Callback<object> onValueChangedDelegate, UpdateValueWithIndex getStoredValueDelegateIndexed, Callback<int, object> onValueChangedDelegateIndexed )
 		{
 			if(!string.IsNullOrEmpty(name))
 				this.memberName = name;
@@ -137,17 +133,21 @@ namespace GILES.Interface
 					declaringType = o.GetType();
 				else
 					declaringType = null;
-			}
 
-			Initialize_INTERNAL();
+                
+
+			}
+            Initialize_INTERNAL();
 		}
 
 		private void Initialize_INTERNAL()
 		{
-			gameObject.name = GetName();
+            gameObject.name = GetName();
 
 			InitializeGUI();
-			if(useDefaultSkin) ApplyDefaultSkin();
+            if (useDefaultSkin) {
+                ApplyDefaultSkin();
+            }
 			UpdateGUI();
 		}
 
@@ -217,10 +217,12 @@ namespace GILES.Interface
 		/// Delegate called when the value is changed via GUI.  If this is non-null, reflection setters will not be invoked.
 		public Callback<int, object> onValueChangedAtIndex = null;
 
-		/**
+        /**
 		 * Called after the target is set.  Use this to initialize GUI.
 		 */
-		public abstract void InitializeGUI();
+        public virtual void InitializeGUI() {
+            Debug.Log("Init GUI");
+        }
 
 		/**
 		 * Update the displayed values by querying GetValue.
@@ -253,6 +255,7 @@ namespace GILES.Interface
 			/// keeps track of how many times per-mouse down or key focus
 			if(++onValueSetCount == 1 && !GetValue<object>().Equals(value) )
 			{
+                
 				if( onValueBeginChange != null )
 					onValueBeginChange();
 
@@ -355,22 +358,23 @@ namespace GILES.Interface
 					pb_ComponentDiff.AddDiff((Component)target, fieldInfo.Name, GetValue<object>());
 			}
 		}
-		
-		/**
+
+        /**
 		 * If propertyInfo or fieldInfo is non-null, this will attempt to GetValue on the target.
 		 * If both are null, object is returned.
 		 */
-		public T GetValue<T>()
-		{
-			if(updateValue != null)
-				return (T) updateValue();
+        public T GetValue<T>(object tNull = null)
+        {
 
-			if(updateValueWithIndex != null)
-				return (T) updateValueWithIndex(index);
+            if (updateValue != null)
+                return (T)updateValue();
 
-			if(propertyInfo != null && target != null)
-				return (T) propertyInfo.GetValue(target, null);
+            if (updateValueWithIndex != null)
+                return (T)updateValueWithIndex(index);
 
+            if(propertyInfo != null && target != null)
+                return (T) propertyInfo.GetValue(target, null);
+            
 			if(fieldInfo != null && target != null)
 				return (T) fieldInfo.GetValue(target);
 

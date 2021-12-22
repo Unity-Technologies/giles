@@ -17,12 +17,9 @@ namespace GILES.Serialization
 
 		public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
 		{
-	        throw new NotImplementedException("Cannot read objects!");
-
-			// @todo - #16
-			// JObject o = JObject.Load(reader);
-			// var obj = o.GetValue("value").ToObject<dynamic>(serializer);
-			// return ((pb_ObjectWrapper)obj).GetValue();
+			 JObject o = JObject.Load(reader);
+            var obj = o.GetValue("value").ToObject(objectType, serializer);
+            return ((pb_ObjectWrapper)obj).GetValue();
 		}
 
 		public override bool CanConvert(Type objectType)
